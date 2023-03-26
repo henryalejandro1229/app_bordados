@@ -31,7 +31,11 @@
           <a class="nav-link" href="/home">INICIO</a>
         </li>
         <li class="nav-item mx-2">
-          <button class="nav-link" mat-button [matMenuTriggerFor]="matMenuAbout">
+          <button
+            class="nav-link"
+            mat-button
+            [matMenuTriggerFor]="matMenuAbout"
+          >
             ACERCA DE NOSOTROS
             <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
           </button>
@@ -41,7 +45,11 @@
           </mat-menu>
         </li>
         <li class="nav-item mx-2">
-          <button class="nav-link" mat-button [matMenuTriggerFor]="matMenuMujer">
+          <button
+            class="nav-link"
+            mat-button
+            [matMenuTriggerFor]="matMenuMujer"
+          >
             MUJER
             <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
           </button>
@@ -52,7 +60,11 @@
           </mat-menu>
         </li>
         <li class="nav-item mx-2">
-          <button class="nav-link" mat-button [matMenuTriggerFor]="matMenuHombre">
+          <button
+            class="nav-link"
+            mat-button
+            [matMenuTriggerFor]="matMenuHombre"
+          >
             HOMBRE
             <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
           </button>
@@ -73,20 +85,20 @@
     <!-- Right elements -->
     <div class="d-flex align-items-center">
       <!-- search input -->
-      <form class="d-flex input-group w-auto mx-4">
-        <input
-          type="search"
-          class="form-control rounded"
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="search-addon"
-        />
-        <span class="input-group-text border-0" id="search-addon">
-          <button mat-mini-fab color="primary" matTooltip="Buscar">
-            <mat-icon>search</mat-icon>
-          </button>
-        </span>
-      </form>
+      <div class="d-flex mx-4">
+        <form class="d-flex input-group w-auto mx-2">
+          <input
+            type="search"
+            class="form-control form-control-sm rounded"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+        </form>
+        <button mat-mini-fab color="primary" matTooltip="Buscar">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
 
       <!-- Avatar -->
       <div class="dropdown">
