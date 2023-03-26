@@ -5,6 +5,9 @@ import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from './material.module';
 import { CarruselComponent } from './carrusel/carrusel.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AvisoPrivacidadComponent } from './aviso-privacidad/aviso-privacidad.component';
+import { MisionVisionComponent } from './mision-vision/mision-vision.component';
+import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
 
 
 
@@ -12,7 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    CarruselComponent
+    CarruselComponent,
+    AvisoPrivacidadComponent,
+    MisionVisionComponent,
+    PreguntasFrecuentesComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     CarruselComponent,
     HttpClientModule,
+    CarruselComponent,
+    AvisoPrivacidadComponent,
+    MisionVisionComponent,
+    PreguntasFrecuentesComponent,
   ],
 })
 export class SharedModule { }

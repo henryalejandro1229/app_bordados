@@ -4,6 +4,7 @@ import { MainComponent } from './main.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
+import { ProductsListComponent } from '../home/pages/products-list/products-list.component';
 
 
 
@@ -11,6 +12,7 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     MainComponent,
     HomeComponent,
+    ProductsListComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     SharedModule,
   ], 
   exports: [
-    HomeComponent
+    HomeComponent,
+    ProductsListComponent,
   ]
 })
 export class PagesModule { }
