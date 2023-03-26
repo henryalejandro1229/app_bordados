@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from './material.module';
 import { CarruselComponent } from './carrusel/carrusel.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -16,12 +17,14 @@ import { CarruselComponent } from './carrusel/carrusel.component';
   imports: [
     CommonModule,
     MaterialModule,
+    HttpClientModule,
   ],
   exports: [
     NavbarComponent,
     FooterComponent,
     MaterialModule,
     CarruselComponent,
+    HttpClientModule,
   ],
 })
 export class SharedModule { }

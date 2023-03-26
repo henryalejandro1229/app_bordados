@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   form: FormGroup;
   clear: boolean = false;
   sending = false;
@@ -15,21 +15,23 @@ export class LoginComponent implements OnInit {
   passwordTyping = false;
   usuarioTyping = false;
 
-  constructor() {
+  constructor(private readonly _loginService: LoginService) {
     this.form = new FormGroup({
       usuario: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required]),
     });
   }
 
   ngOnInit(): void {
+    this._loginService.getUsuarios().subscribe((data) => {
+      console.log(data);
+    });
   }
 
   login() {
     // (<any>Object).values((<FormGroup>this.form).controls).forEach(campo => {
     //   campo.markAsTouched();
     // });
-
     // if (this.form.valid) {
     //   showLoader(true);
     //   this.sending = true;
@@ -67,5 +69,4 @@ export class LoginComponent implements OnInit {
       this.login();
     }
   }
-
 }
