@@ -18,7 +18,7 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0">
+      <a href="/home" class="navbar-brand mt-2 mt-lg-0">
         <img
           src="../../../assets/resources/image-logo.jpeg"
           height="60"
@@ -100,7 +100,7 @@
         </button>
       </div>
 
-      <button class="nav-link" mat-button>INICIAR SESIÓN</button>
+      <button class="nav-link" (click)="iniciaSesion()" mat-button>INICIAR SESIÓN</button>
 
       <!-- Avatar -->
       <div class="dropdown">
