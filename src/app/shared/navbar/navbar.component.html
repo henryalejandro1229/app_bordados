@@ -100,6 +100,8 @@
         </button>
       </div>
 
+      <button class="nav-link" mat-button>INICIAR SESIÓN</button>
+
       <!-- Avatar -->
       <div class="dropdown">
         <a
@@ -110,27 +112,18 @@
           aria-expanded="false"
         >
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+            src="../../../assets/resources/perfilimagen.png"
             class="rounded-circle"
             height="35"
             alt="Black and White Portrait of a Man"
             loading="lazy"
+            [matMenuTriggerFor]="matMenuPerfil"
           />
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <li>
-            <a class="dropdown-item">My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item">Logout</a>
-          </li>
-        </ul>
+        <mat-menu #matMenuPerfil="matMenu">
+          <button mat-menu-item>Mi perfil</button>
+          <button mat-menu-item>Cerrar sesión</button>
+        </mat-menu>
       </div>
     </div>
     <!-- Right elements -->
