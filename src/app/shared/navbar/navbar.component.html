@@ -1,59 +1,128 @@
-<div class="col-md-12">
-  <nav
-    class="navbar navbar-expand-lg navbar-dark bg-primary col-md-12 px-4 py-3"
-  >
-    <a class="navbar-brand" href="/home">Navbar</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
 
+    <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"
-            >Home <span class="sr-only">(current)</span></a
-          >
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0">
+        <img
+          src="../../../assets/resources/image-logo.jpeg"
+          height="60"
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/home">INICIO</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li class="nav-item mx-2">
+          <button class="nav-link" mat-button [matMenuTriggerFor]="matMenuAbout">
+            ACERCA DE NOSOTROS
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #matMenuAbout="matMenu">
+            <button mat-menu-item>AVISO DE PRIVACIDAD</button>
+            <button mat-menu-item>MISIÓN Y VISIÓN</button>
+          </mat-menu>
         </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+        <li class="nav-item mx-2">
+          <button class="nav-link" mat-button [matMenuTriggerFor]="matMenuMujer">
+            MUJER
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #matMenuMujer="matMenu">
+            <button mat-menu-item>OPC 1</button>
+            <button mat-menu-item>OPC 2</button>
+            <button mat-menu-item>OPC 3</button>
+          </mat-menu>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+        <li class="nav-item mx-2">
+          <button class="nav-link" mat-button [matMenuTriggerFor]="matMenuHombre">
+            HOMBRE
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #matMenuHombre="matMenu">
+            <button mat-menu-item>OPC 1</button>
+            <button mat-menu-item>OPC 2</button>
+            <button mat-menu-item>OPC 3</button>
+          </mat-menu>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/pedidos">PEDIDOS</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <mat-form-field appearance="outline">
-          <input
-            type="search"
-            matInput
-            placeholder="Buscar"
-          />
-          <mat-icon matPrefix>search</mat-icon>
-          <!-- <button matSuffix mat-button color="accent">Buscar</button> -->
-        </mat-form-field>
-        <!-- <input
-          class="form-control mr-sm-2"
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- search input -->
+      <form class="d-flex input-group w-auto mx-4">
+        <input
           type="search"
+          class="form-control rounded"
           placeholder="Search"
           aria-label="Search"
-        /> -->
+          aria-describedby="search-addon"
+        />
+        <span class="input-group-text border-0" id="search-addon">
+          <button mat-mini-fab color="primary" matTooltip="Buscar">
+            <mat-icon>search</mat-icon>
+          </button>
+        </span>
       </form>
+
+      <!-- Avatar -->
+      <div class="dropdown">
+        <a
+          class="dropdown-toggle d-flex align-items-center hidden-arrow"
+          id="navbarDropdownMenuAvatar"
+          role="button"
+          data-mdb-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+            class="rounded-circle"
+            height="35"
+            alt="Black and White Portrait of a Man"
+            loading="lazy"
+          />
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuAvatar"
+        >
+          <li>
+            <a class="dropdown-item">My profile</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Settings</a>
+          </li>
+          <li>
+            <a class="dropdown-item">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </nav>
-</div>
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
