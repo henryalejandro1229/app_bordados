@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
+import { catchError } from 'rxjs';
+import { Router } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +18,10 @@ export class LoginComponent implements OnInit {
   passwordTyping = false;
   usuarioTyping = false;
 
-  constructor(private readonly _loginService: LoginService) {
+  constructor(
+    private readonly _loginService: LoginService,
+    private readonly _router: Router
+  ) {
     this.form = new FormGroup({
       usuario: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
@@ -23,45 +29,49 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._loginService.getUsuarios().subscribe((data) => {
-      console.log(data);
-    });
+    
+    swal({
+      title: 'Atención!',
+      text: '¿Deseas agregar todos los productos existentes al almacen? (Esto puede demorar un par de minutos)',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No',
+      confirmButtonClass: 'btn btn-success',
+      cancelButtonClass: 'btn btn-danger',
+      buttonsStyling: false
+    })
   }
 
   login() {
     // (<any>Object).values((<FormGroup>this.form).controls).forEach(campo => {
     //   campo.markAsTouched();
     // });
-    // if (this.form.valid) {
-    //   showLoader(true);
-    //   this.sending = true;
-    //   this._loginService.login(this.form.value.usuario, this.form.value.password)
-    //     .subscribe((d: boolean) => {
-    //         showLoader(false);
-    //         this._loginService.setUserRepartidorInLocalStorage(this.form.value.usuario);
-    //         this.sending = false;
-    //         this._router.navigate(['/app']);
-    //         if (d) {
-    //           this.Notificacion.duration = 500;
-    //           this.Notificacion.showNotification('Sesion iniciada', 'success');
-    //         }
-    //       },
-    //       e => {
-    //         this.captchaRef.reset();
-    //         this.sending = false;
-    //         catchError(e);
-    //       });
-    // }
-  }
-
-  submit() {
-    // const usuario = this.form.value.usuario;
-    // const checkRepartidor = this._loginService.checkUserRepartidorInLocalStorage(usuario);
-    // if (environment.modoOnline) {
-    //   return checkRepartidor ? this.login() : this.captchaRef.execute();
-    // } else {
-    //   this.login();
-    // }
+    if (this.form.valid) {
+      // showLoader(true);
+      this.sending = true;
+      this._loginService
+        .login(this.form.value.usuario, this.form.value.password)
+        .subscribe(
+          (res : any[]) => {
+            if(res.length > 0) {
+              this._router.navigate(['/home']);
+            } else {
+            }
+            // showLoader(false);
+            // this._loginService.setUserRepartidorInLocalStorage(this.form.value.usuario);
+            // this.sending = false;
+            // if (d) {
+            //   this.Notificacion.duration = 500;
+            //   this.Notificacion.showNotification('Sesion iniciada', 'success');
+            // }
+          },
+          (e) => {
+            // this.sending = false;
+            catchError(e);
+          }
+        );
+    }
   }
 
   resolved(data: any) {
