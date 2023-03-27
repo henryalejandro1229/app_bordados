@@ -6,11 +6,15 @@ import { ForgotPwdComponent } from './login/forgot-pwd/forgot-pwd.component';
 import { MisionVisionComponent } from './shared/mision-vision/mision-vision.component';
 import { AvisoPrivacidadComponent } from './shared/aviso-privacidad/aviso-privacidad.component';
 import { PreguntasFrecuentesComponent } from './shared/preguntas-frecuentes/preguntas-frecuentes.component';
+import { RegisterProcessComponent } from './login/register-process/register-process.component';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'singup', component: RegisterComponent },
   { path: 'forgot-pwd', component: ForgotPwdComponent },
+  { path: 'singup-process', component: RegisterProcessComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'mision-vision', component: MisionVisionComponent },
   { path: 'aviso-privacidad', component: AvisoPrivacidadComponent },
   { path: 'preguntas-frecuentes', component: PreguntasFrecuentesComponent },

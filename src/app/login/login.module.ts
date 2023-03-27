@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
+import { RegisterProcessComponent } from './register-process/register-process.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -11,7 +13,9 @@ import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ForgotPwdComponent
+    ForgotPwdComponent,
+    RegisterProcessComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,9 @@ import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
   exports: [
     LoginComponent,
     RegisterComponent,
-    ForgotPwdComponent
+    ForgotPwdComponent,
+    RegisterProcessComponent,
+    ResetPasswordComponent
   ]
 })
 export class LoginModule { }
