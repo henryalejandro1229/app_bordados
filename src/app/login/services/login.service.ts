@@ -7,12 +7,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-
   constructor(private readonly http: HttpClient) {}
 
   getUsuarios(): Observable<any> {
-    return this.http
-      .get(`${environment.url}/users/read.php`);
+    return this.http.get(`${environment.url}/users/read.php`);
+  }
+
+  validateEmail(email: string): Observable<any> {
+    return this.http.get(
+      `${environment.url}/users/read_single.php?email=${email}`
+    );
   }
 
   login(email: string, password: string): Observable<any> {
@@ -24,17 +28,13 @@ export class LoginService {
     const url = `${environment.url}/users/create.php?email=${email}`;
     return this.http.get(url);
   }
-  
-  // nuevoAreaEnvio(obj: AreaEnvioModel): Observable<RespuestaModelo> {
-  //   const url = `${environment.urlEntregas}/tipo_envio`;
-  //   return this.http.post<RespuestaModelo>(url, obj);
-  // }
-  // actualizaAreaEnvio(obj: AreaEnvioModel): Observable<RespuestaModelo> {
-  //   const url = `${environment.urlEntregas}/tipo_envio/${obj.ID}`;
-  //   return this.http.put<RespuestaModelo>(url, obj);
-  // }
-  // eliminaAreaEnvio(id: string): Observable<RespuestaModelo> {
-  //   const url = `${environment.urlEntregas}/tipo_envio/${id}`;
-  //   return this.http.delete<RespuestaModelo>(url);
-  // }
+
+  sendValidateEmail(email: string, id: string): Observable<any> {
+    let body = {
+      email,
+      id,
+    };
+    const url = `${environment.urlEmail}/send-validate-email`;
+    return this.http.post(url, body);
+  }
 }

@@ -2,9 +2,11 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 export const host = '127.0.0.1';
+export const hostEmail = 'localhost:4000'
 export const environment = {
   production: false,
-  url: `bordados_app_backend/api`
+  url: `bordados_app_backend/api`,
+  urlEmail: `http://${hostEmail}/bordados_app_backend`,
 };
 
 /*

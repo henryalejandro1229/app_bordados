@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { catchError } from 'rxjs';
 import { Router } from '@angular/router';
-import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -29,18 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    swal({
-      title: 'Atención!',
-      text: '¿Deseas agregar todos los productos existentes al almacen? (Esto puede demorar un par de minutos)',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si',
-      cancelButtonText: 'No',
-      confirmButtonClass: 'btn btn-success',
-      cancelButtonClass: 'btn btn-danger',
-      buttonsStyling: false
-    })
   }
 
   login() {

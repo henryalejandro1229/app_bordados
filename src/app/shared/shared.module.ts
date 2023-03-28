@@ -9,8 +9,7 @@ import { AvisoPrivacidadComponent } from './aviso-privacidad/aviso-privacidad.co
 import { MisionVisionComponent } from './mision-vision/mision-vision.component';
 import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { ModalCerrarSesionComponent } from './modal-cerrar-sesion/modal-cerrar-sesion.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AvisoPrivacidadComponent,
     MisionVisionComponent,
     PreguntasFrecuentesComponent,
+    ModalCerrarSesionComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -42,4 +42,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}
