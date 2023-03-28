@@ -29,10 +29,7 @@ export class RegisterComponent implements OnInit {
     if (this.formLogin.valid) {
       this._ls.singup(this.formLogin.value.email).subscribe(
         (res: any) => {
-          showSwalSuccess(
-            'Operación exitosa',
-            'Para continuar, ingrese al enlace que fue enviado a su correo electrónico'
-          );
+          this.validateEmail(true);
         },
         (e) => {
           showNotifyError('Error al registrar', 'Intente mas tarde');
@@ -44,18 +41,20 @@ export class RegisterComponent implements OnInit {
   validateEmail(sendEmail = false): void {
     this._ls.validateEmail(this.formLogin.value.email).subscribe(
       (res: any[]) => {
+        if (res.length === 1) {
+          let { email, _id } = res[0];
+          sendEmail ? this.sendEmail(email, _id.$oid) : this.register();
+          return;
+        }
         if (res.length > 0) {
           console.log(res[0]._id.$oid);
           showSwalWarning(
             'Correo existente',
             'Ya existe una cuenta con el correo ingresado'
           );
-          let { email, _id } = res[0];
-          this.sendEmail(email, _id.$oid);
           return;
         }
-        // let { email, id } = res[0];
-        // sendEmail ? this.sendEmail(email, id.$oid) : this.register();
+        this.register();
       },
       (e) => {
         showNotifyError('Error al validar el email', 'Intente mas tarde');
