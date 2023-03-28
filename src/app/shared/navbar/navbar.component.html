@@ -101,10 +101,10 @@
         </button>
       </div>
 
-      <button class="nav-link" (click)="routerLink('/login')" mat-button>INICIAR SESIÓN</button>
+      <button class="k-btn-pry-pink" (click)="routerLink('/login')" *ngIf="!isAuth" mat-button><mat-icon matSuffix>login</mat-icon> INICIAR SESIÓN</button>
 
       <!-- Avatar -->
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="isAuth">
         <a
           class="dropdown-toggle d-flex align-items-center hidden-arrow"
           id="navbarDropdownMenuAvatar"

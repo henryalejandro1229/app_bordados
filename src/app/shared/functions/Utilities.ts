@@ -36,38 +36,63 @@ export function showNotifyError(title: string, message: string) {
   }).catch(swal.noop);
 }
 
-export function showSwalSuccess(title = 'Error al realizar la solicitud', message: string) {
+export function showSwalSuccess(
+  title = 'Error al realizar la solicitud',
+  message: string
+) {
   return swal({
     type: 'success',
     titleText: title,
     text: message,
-    showCloseButton: true
+    showCloseButton: true,
   }).catch(swal.noop);
 }
 
-export function showSwalError(title = 'Error al realizar la solicitud', message: string) {
+export function showSwalError(
+  title = 'Error al realizar la solicitud',
+  message: string
+) {
   return swal({
     type: 'error',
     titleText: title,
     text: message,
-    showCloseButton: true
+    showCloseButton: true,
   }).catch(swal.noop);
 }
 
-export function showSwalWarning(title = 'Error al realizar la solicitud', message: string) {
+export function showSwalWarning(
+  title = 'Error al realizar la solicitud',
+  message: string
+) {
   return swal({
     type: 'warning',
     titleText: title,
     text: message,
-    showCloseButton: true
+    showCloseButton: true,
   }).catch(swal.noop);
 }
 
-export function showSwalInfo(title = 'Error al realizar la solicitud', message: string) {
+export function showSwalInfo(
+  title = 'Error al realizar la solicitud',
+  message: string
+) {
   return swal({
     type: 'info',
     titleText: title,
     text: message,
-    showCloseButton: true
+    showCloseButton: true,
+  }).catch(swal.noop);
+}
+
+export function showModalConfirmation(title: string, message: string) {
+  return swal({
+    type: 'question',
+    titleText: title,
+    text: message,
+    showCancelButton: true,
+    confirmButtonColor: '#e30052',
+    cancelButtonColor: '#808080',
+    confirmButtonText: 'Confirmar',
+    cancelButtonText: 'Cancelar',
   }).catch(swal.noop);
 }
