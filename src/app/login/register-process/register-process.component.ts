@@ -49,7 +49,7 @@ export class RegisterProcessComponent implements OnInit {
   consultaInfo(id: string): void {
     this._ls.getUsuario(id).subscribe(
       (res: ClienteModelo[]) => {
-        if (res.length === 0) {
+        if (!res[0]._id) {
           showNotifyError('Acceso denegado', 'Ruta no válida');
           this._router.navigate(['/home']);
           return;
