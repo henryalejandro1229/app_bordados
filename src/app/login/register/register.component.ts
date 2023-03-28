@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
-import { Router } from '@angular/router';
 import {
   showNotifyError,
-  showNotifySuccess,
   showSwalSuccess,
   showSwalWarning,
 } from 'src/app/shared/functions/Utilities';
@@ -15,19 +13,19 @@ import {
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  formLogin!: FormGroup;
+  formRegister!: FormGroup;
 
-  constructor(private _ls: LoginService, private router: Router) {}
+  constructor(private _ls: LoginService) {}
 
   ngOnInit(): void {
-    this.formLogin = new FormGroup({
+    this.formRegister = new FormGroup({
       email: new FormControl('', [Validators.required]),
     });
   }
 
   register(): void {
-    if (this.formLogin.valid) {
-      this._ls.singup(this.formLogin.value.email).subscribe(
+    if (this.formRegister.valid) {
+      this._ls.singup(this.formRegister.value.email).subscribe(
         (res: any) => {
           this.validateEmail(true);
         },
@@ -39,7 +37,7 @@ export class RegisterComponent implements OnInit {
   }
 
   validateEmail(sendEmail = false): void {
-    this._ls.validateEmail(this.formLogin.value.email).subscribe(
+    this._ls.validateEmail(this.formRegister.value.email).subscribe(
       (res: any[]) => {
         if (res.length === 1) {
           let { email, _id } = res[0];

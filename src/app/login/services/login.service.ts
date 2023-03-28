@@ -46,4 +46,13 @@ export class LoginService {
     const url = `${environment.urlEmail}/send-validate-email`;
     return this.http.post(url, body);
   }
+
+  sendForgotEmail(email: string, id: string): Observable<any> {
+    let body = {
+      email,
+      id,
+    };
+    const url = `${environment.urlEmail}/send-forgot-password`;
+    return this.http.post(url, body);
+  }
 }

@@ -36,7 +36,8 @@ export class RegisterProcessComponent implements OnInit {
     this.activatedRouter.queryParams.subscribe((param) => {
       let id: string = param['id'];
       if (!id) {
-        showNotifyError('Proceso no válido', 'No encontrado');
+        showNotifyError('Acceso denegado', 'Ruta no válida');
+        this._router.navigate(['/home']);
         return;
       }
       this.consultaInfo(id);
@@ -49,7 +50,8 @@ export class RegisterProcessComponent implements OnInit {
     this._ls.getUsuario(id).subscribe(
       (res: ClienteModelo[]) => {
         if (res.length === 0) {
-          showNotifyError('Proceso no válido', 'No encontrado');
+          showNotifyError('Acceso denegado', 'Ruta no válida');
+          this._router.navigate(['/home']);
           return;
         }
         this.objCliente = res[0];
