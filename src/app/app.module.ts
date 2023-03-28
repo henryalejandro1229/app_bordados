@@ -7,6 +7,7 @@ import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PagesModule } from './pages/pages.module';
+import { ProductosModule } from './productos/productos.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PagesModule } from './pages/pages.module';
     AdminModule,
     LoginModule,
     PagesModule,
+    ProductosModule,
     BrowserAnimationsModule
   ],
   providers: [],
