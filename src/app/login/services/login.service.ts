@@ -38,6 +38,11 @@ export class LoginService {
     return this.http.get(url);
   }
 
+  updatePwd(id: string, password: string): Observable<any> {
+    const url = `${environment.url}/users/update_password.php?id=${id}&password=${password}`;
+    return this.http.get(url);
+  }
+
   sendValidateEmail(email: string, id: string): Observable<any> {
     let body = {
       email,

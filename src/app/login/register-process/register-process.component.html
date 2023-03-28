@@ -22,8 +22,8 @@
             <div class="form-password">
               <mat-form-field appearance="outline" class="form-full">
                 <mat-label>Contraseña</mat-label>
-                <input matInput (keyup)="validaPwds()" matInput [type]="clear ? 'text' : 'password'" formControlName="password"
-                  placeholder="Ingrese su contraseña" />
+                <input matInput (keyup)="validaPwds()" matInput [type]="clear ? 'text' : 'password'"
+                  formControlName="password" placeholder="Ingrese su contraseña" />
                 <mat-icon class="puntero" (click)="clear = !clear" matSuffix [color]="clear ? 'primary' : ''">
                   {{ clear ? "visibility" : "visibility_off" }}
                 </mat-icon>
