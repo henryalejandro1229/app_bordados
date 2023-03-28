@@ -1,48 +1,23 @@
-<img src="./../../../../assets/resources/slider1.jpeg" class="img-fluid" alt="Responsive image">
+<img *ngIf="typeCat === 'man'" src="./../../../../assets/resources/sld1.png" class="img-fluid" alt="Responsive image">
+<img *ngIf="typeCat === 'woman'" src="./../../../../assets/resources/sld2.png" class="img-fluid" alt="Responsive image">
 <div class="container">
     <div class="py-4">
-        <p class="h3">Moda para caballero</p>
+        <p class="h3">{{typeCat === 'man' ? 'Moda para caballero': 'Moda para dama'}}</p>
         <p class="h5 fw-light">Encuentre el producto que busca.</p>
     </div>
     <mat-divider></mat-divider>
     <div class="py-4">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-4">
-            <div class="col">
+            <div class="col" *ngFor="let cat of objCategories">
                 <div class="card h-100 shadow hover-shadow">
                     <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" alt="Hollywood Sign on The Hill"
                         class="card-img-top" />
                     <div class="card-body">
-                        <p class="h5 text-center fw-bold pt-4">Man T -shirt</p>
-                        <p class="h6 text-center fw-light">Description</p>
+                        <p class="h5 text-center fw-bold pt-4">{{cat.name}}</p>
+                        <p class="h6 text-center fw-light">{{cat.description}}</p>
                     </div>
-                    <div class="card-footer d-flex justify-content-center align-items-center">
-                        <button (click)="viewListProducts()" class="btn btn-danger my-2">Ver detalle</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow hover-shadow">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" alt="Hollywood Sign on The Hill"
-                        class="card-img-top" />
-                    <div class="card-body">
-                        <p class="h5 text-center fw-bold pt-4">Man T -shirt</p>
-                        <p class="h6 text-center fw-light">Description</p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-center align-items-center">
-                        <button (click)="viewListProducts()" class="btn btn-danger my-2">Ver detalle</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow hover-shadow">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp" alt="Hollywood Sign on The Hill"
-                        class="card-img-top" />
-                    <div class="card-body">
-                        <p class="h5 text-center fw-bold pt-4">Man T -shirt</p>
-                        <p class="h6 text-center fw-light">Description</p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-center align-items-center">
-                        <button (click)="viewListProducts()" class="btn btn-danger my-2">Ver detalle</button>
+                    <div class="card-footer mt-2 d-flex justify-content-center">
+                        <button (click)="verCategoria(cat)" class="btn btn-danger my-2">Ver categoría</button>
                     </div>
                 </div>
             </div>

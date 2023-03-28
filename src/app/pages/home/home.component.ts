@@ -25,9 +25,9 @@ export class HomeComponent implements OnInit {
     this.getCategories();
   }
 
-  viewListCategories(): void {
+  viewListCategories(categorySex: string): void {
     if (this._auth.isAuth()) {
-      this._router.navigate(['/home/list-categories']);
+      this._router.navigate(['/home/list-categories', categorySex]);
       return;
     }
     this._router.navigate(['/login']);
@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
   }
 
   verCategoria(category: CategoryModelo) {
-    this._router.navigate(['/home/list-categories', category._id.$oid]);
-    
+    this._router.navigate(['/home/list-categories/category', category._id.$oid]);
   }
 }
