@@ -1,4 +1,4 @@
-export interface ClienteModelo {
+export interface CategoryModelo {
   _id: any;
   name?: string;
   description?: string;
@@ -6,6 +6,7 @@ export interface ClienteModelo {
 }
 
 export interface ProductoModelo {
+  _id: any;
   categoryID: string;
   title: string;
   description: string;

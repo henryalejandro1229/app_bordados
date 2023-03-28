@@ -16,7 +16,7 @@ export class ListCategoriesComponent implements OnInit {
 
   viewListProducts(): void {
     if(this._auth.isAuth()) {
-      this._router.navigate(['/home/list-categories/list-products']);
+      this._router.navigate(['/home/list-categories']);
       return;
     }
     this._router.navigate(['/login']);
