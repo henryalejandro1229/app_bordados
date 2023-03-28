@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
-import { catchError } from 'rxjs';
 import { Router } from '@angular/router';
+import { showNotifyError, showNotifySuccess, showNotifyWarning } from 'src/app/shared/functions/Utilities';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private readonly _router: Router
   ) {
     this.form = new FormGroup({
-      usuario: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
   }
@@ -32,27 +32,21 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.form.valid) {
-      // showLoader(true);
       this.sending = true;
       this._loginService
-        .login(this.form.value.usuario, this.form.value.password)
+        .login(this.form.value.email, this.form.value.password)
         .subscribe(
           (res : any[]) => {
             if(res.length > 0) {
+              showNotifySuccess('Bienvenido', '');
               this._router.navigate(['/home']);
             } else {
+              showNotifyWarning('Email o contraseña incorrectos', 'Verifica tus datos')
             }
-            // showLoader(false);
             // this._loginService.setUserRepartidorInLocalStorage(this.form.value.usuario);
-            // this.sending = false;
-            // if (d) {
-            //   this.Notificacion.duration = 500;
-            //   this.Notificacion.showNotification('Sesion iniciada', 'success');
-            // }
           },
           (e) => {
-            // this.sending = false;
-            catchError(e);
+            showNotifyError('Error al iniciar sesión', 'Intente mas tarde');
           }
         );
     }
