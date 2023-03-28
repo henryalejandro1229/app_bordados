@@ -17,7 +17,7 @@ const routes: Routes = [
         loadChildren: () => import('../admin/admin.module').then(mod => mod.AdminModule),
       },
       {
-        path: 'list-products',
+        path: 'list-categories',
         loadChildren: () => import('../productos/productos.module').then(mod => mod.ProductosModule),
       },
     ],

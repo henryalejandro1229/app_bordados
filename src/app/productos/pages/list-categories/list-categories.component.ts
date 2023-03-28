@@ -3,20 +3,20 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-list-categories',
+  templateUrl: './list-categories.component.html',
+  styleUrls: ['./list-categories.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ListCategoriesComponent implements OnInit {
 
   constructor(private readonly _router: Router, private _auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  viewListCategories(): void {
+  viewListProducts(): void {
     if(this._auth.isAuth()) {
-      this._router.navigate(['/home/list-categories']);
+      this._router.navigate(['/home/list-categories/list-products']);
       return;
     }
     this._router.navigate(['/login']);

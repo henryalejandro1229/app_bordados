@@ -5,6 +5,7 @@ import { ListProductsComponent } from './pages/list-products/list-products.compo
 import { DetailProductComponent } from './pages/detail-product/detail-product.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProductosRoutingModule } from './productos-routing.module';
+import { ListCategoriesComponent } from './pages/list-categories/list-categories.component';
 
 
 
@@ -13,6 +14,7 @@ import { ProductosRoutingModule } from './productos-routing.module';
     ProductosComponent,
     ListProductsComponent,
     DetailProductComponent,
+    ListCategoriesComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { ProductosRoutingModule } from './productos-routing.module';
   exports: [
     ListProductsComponent,
     DetailProductComponent,
+    ListCategoriesComponent,
   ]
 })
 export class ProductosModule { }
