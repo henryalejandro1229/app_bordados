@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AvisoPrivacidadComponent } from './aviso-privacidad/aviso-privacidad.component';
 import { MisionVisionComponent } from './mision-vision/mision-vision.component';
 import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,6 +22,8 @@ import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-f
     PreguntasFrecuentesComponent,
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     MaterialModule,
     HttpClientModule,
@@ -35,6 +38,8 @@ import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-f
     AvisoPrivacidadComponent,
     MisionVisionComponent,
     PreguntasFrecuentesComponent,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class SharedModule { }

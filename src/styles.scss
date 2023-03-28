@@ -3,12 +3,20 @@
 @import "./assets/styles/colores.scss";
 @import "./assets/styles/buttons.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 .form-full {
-    width: 100%
+  width: 100%;
 }
 .shadow {
-    border: none;
+  border: none;
+}
+.b-nn {
+  border: none;
 }

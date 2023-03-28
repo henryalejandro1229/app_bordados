@@ -2,45 +2,34 @@
 <main class="login-page bg-light">
   <section class="login-body">
     <section class="login-logo">
-      <a href="/home" style="cursor: pointer"
-        ><img src="../../../assets/resources/image-logo.jpeg" alt=""
-      /></a>
+      <a href="/home" style="cursor: pointer"><img src="../../../assets/resources/image-logo.jpeg" alt="" /></a>
     </section>
     <section class="login-container shadow-lg">
-      <form formGroup="form">
-        <section class="card" style="border: none;">
-          <header class="title-card">
-            <h1>Registro</h1>
-          </header>
-          <mat-divider></mat-divider>
+      <section class="card b-nn">
+        <header class="title-card">
+          <h1>Registro</h1>
+        </header>
+        <mat-divider></mat-divider>
+        <form [formGroup]="formLogin">
           <section class="card-form">
             <div class="form-usuario">
               <mat-form-field appearance="outline" class="form-full">
                 <mat-label>Correo electrónico</mat-label>
-                <input
-                  matInput
-                  formControlName="email"
-                  placeholder="Ingrese su correo electrónico"
-                  type="email"
-                  required
-                />
+                <input matInput formControlName="email" placeholder="Ingrese su correo electrónico" type="email"
+                  required />
               </mat-form-field>
             </div>
           </section>
-          <section class="action">
-            <button
-              (click)="register()"
-              class="k-btn-primary k-btn-pry-pink"
-              mat-flat-button
-            >
-              Registrarme
-            </button>
-          </section>
-          <div class="forgot-psw text-center">
-            <a href="/login">Iniciar sesión</a>
-          </div>
+        </form>
+        <section class="action">
+          <button (click)="register()" class="k-btn-primary k-btn-pry-pink" mat-flat-button>
+            Registrarme
+          </button>
         </section>
-      </form>
+        <div class="forgot-psw text-center">
+          <a href="/login">Iniciar sesión</a>
+        </div>
+      </section>
     </section>
   </section>
   <app-footer></app-footer>

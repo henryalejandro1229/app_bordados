@@ -19,6 +19,11 @@ export class LoginService {
     const url = `${environment.url}/users/login.php?email=${email}&password=${password}`;
     return this.http.get(url);
   }
+
+  singup(email: string): Observable<any> {
+    const url = `${environment.url}/users/create.php?email=${email}`;
+    return this.http.get(url);
+  }
   
   // nuevoAreaEnvio(obj: AreaEnvioModel): Observable<RespuestaModelo> {
   //   const url = `${environment.urlEntregas}/tipo_envio`;
