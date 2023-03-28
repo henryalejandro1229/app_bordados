@@ -24,3 +24,10 @@ body {
   padding: 0 !important;
   border-radius: 4px;
 }
+.hover-shadow {
+  transition: transform 0.2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+  }
+}
