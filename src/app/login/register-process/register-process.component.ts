@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  showNotifyError,
+  showNotifySuccess,
+  showNotifyWarning,
+  showSwalWarning,
+} from 'src/app/shared/functions/Utilities';
+import { LoginService } from '../services/login.service';
+import { ClienteModelo } from '../models/cliente.modelo';
 
 @Component({
   selector: 'app-register-process',
@@ -10,19 +19,80 @@ export class RegisterProcessComponent implements OnInit {
   form: FormGroup;
   clear: boolean = false;
   clearConfirm: boolean = false;
-  sending = false;
-  fecha = new Date();
-  passwordTyping = false;
-  usuarioTyping = false;
+  objCliente: ClienteModelo = { _id: undefined };
+  pwdsCoinciden = false;
+  pwdsValue = false;
 
-  constructor() {
+  constructor(
+    private activatedRouter: ActivatedRoute,
+    private _ls: LoginService,
+    private readonly _router: Router
+  ) {
     this.form = new FormGroup({
-      usuario: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
+      password2: new FormControl('', [Validators.required]),
+    });
+    this.activatedRouter.queryParams.subscribe((param) => {
+      let id: string = param['id'];
+      if (!id) {
+        showNotifyError('Proceso no válido', 'No encontrado');
+        return;
+      }
+      this.consultaInfo(id);
     });
   }
 
   ngOnInit(): void {}
 
-  register() {}
+  consultaInfo(id: string): void {
+    this._ls.getUsuario(id).subscribe(
+      (res: ClienteModelo[]) => {
+        if (res.length === 0) {
+          showNotifyError('Proceso no válido', 'No encontrado');
+          return;
+        }
+        this.objCliente = res[0];
+        console.log(this.objCliente);
+      },
+      (e) => {
+        showNotifyError('Error al consultar información', 'Intente mas tarde');
+      }
+    );
+  }
+
+  register(): void {
+    if (this.form.valid && this.pwdsCoinciden) {
+      let id: string = this.objCliente._id.$oid;
+      this._ls
+        .singupAll(id, this.form.value.name, this.form.value.password)
+        .subscribe(
+          (res) => {
+            showNotifySuccess('Registro completado', '¡Su cuenta está lista!');
+            this._router.navigate(['/home']);
+          },
+          (e) => {
+            showNotifyError('Error al registrar', 'Intente mas tarde');
+          }
+        );
+      return;
+    }
+    showNotifyWarning(
+      'Datos incompletos',
+      'Complete los datos del formulario para continuar'
+    );
+  }
+
+  validaPwds(): void {
+    console.log(this.form.value.password);
+    if (this.form.value.password && this.form.value.password2) {
+      this.pwdsValue = true;
+      this.pwdsCoinciden =
+        this.form.value.password === this.form.value.password2;
+      return;
+    }
+    this.pwdsCoinciden = false;
+    this.pwdsValue = false;
+    console.log(this.pwdsCoinciden);
+  }
 }

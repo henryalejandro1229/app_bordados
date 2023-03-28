@@ -2,7 +2,7 @@ import swal from 'sweetalert2';
 
 export function showNotifySuccess(title: string, message: string) {
   return swal({
-    position: 'top-right',
+    position: 'bottom-right',
     timer: 2500,
     type: 'success',
     titleText: title,
@@ -14,7 +14,7 @@ export function showNotifySuccess(title: string, message: string) {
 
 export function showNotifyWarning(title: string, message: string) {
   return swal({
-    position: 'top-right',
+    position: 'bottom-right',
     timer: 2500,
     type: 'warning',
     titleText: title,
@@ -26,7 +26,7 @@ export function showNotifyWarning(title: string, message: string) {
 
 export function showNotifyError(title: string, message: string) {
   return swal({
-    position: 'top-right',
+    position: 'bottom-right',
     timer: 2500,
     type: 'error',
     titleText: title,

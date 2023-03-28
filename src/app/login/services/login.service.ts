@@ -19,8 +19,17 @@ export class LoginService {
     );
   }
 
+  getUsuario(id: string): Observable<any> {
+    return this.http.get(`${environment.url}/users/getUser.php?id=${id}`);
+  }
+
   login(email: string, password: string): Observable<any> {
     const url = `${environment.url}/users/login.php?email=${email}&password=${password}`;
+    return this.http.get(url);
+  }
+
+  singupAll(id: string, name: string, password: string): Observable<any> {
+    const url = `${environment.url}/users/singupAll.php?id=${id}&name=${name}&password=${password}`;
     return this.http.get(url);
   }
 

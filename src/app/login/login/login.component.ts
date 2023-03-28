@@ -31,9 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // (<any>Object).values((<FormGroup>this.form).controls).forEach(campo => {
-    //   campo.markAsTouched();
-    // });
     if (this.form.valid) {
       // showLoader(true);
       this.sending = true;
