@@ -1,1 +1,51 @@
-<p>modal-category works!</p>
+<main>
+    <header class="modal-header">
+        <div class="modal-title">
+            {{data.isNew ? 'Nueva': 'Editar'}} categoría
+        </div>
+
+        <button mat-icon-button mat-dialog-close tabindex="-1">
+            <mat-icon class="close-icon btn-close-modal">close</mat-icon>
+        </button>
+    </header>
+
+    <section class="modal-body">
+
+        <div class="subtitle">
+            <div>
+                Configuración de accesos
+            </div>
+            <div class="linear"></div>
+        </div>
+
+        <form [formGroup]="form">
+            <div class="row">
+                <mat-form-field class="col-xs-12" color="primary" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" placeholder="Nombre de la categoría" formControlName="name"/>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-xs-12" color="primary" appearance="outline">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput type="text" placeholder="Descripción de la categoría" formControlName="description"/>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-xs-12" color="primary" appearance="outline">
+                    <mat-label>Sexo</mat-label>
+                    <mat-select formControlName="categorySex">
+                        <mat-option value="woman">Dama</mat-option>
+                        <mat-option value="man">Caballero</mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </div>
+        </form>
+    </section>
+
+    <section class="footer">
+        <button [disabled]="form.invalid"
+              mat-raised-button class="k-btn-pry-pink" (click)="submit()">{{data.isNew ? 'Crear': 'Actualizar'}} categoría</button>
+    </section>
+
+</main>

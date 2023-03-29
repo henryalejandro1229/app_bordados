@@ -51,7 +51,13 @@
 
 .k-btn-pry-pink {
   background-color: $pry-pink !important;
-  color: #FFF;
+  color: #FFF !important;
+}
+
+.k-btn-pry-pink:disabled {
+  background-color: #BDBDBD !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
 }
 
 .k-btn-pry-danger {

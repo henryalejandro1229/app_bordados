@@ -1,8 +1,8 @@
 export interface CategoryModelo {
   _id: any;
-  name?: string;
-  description?: string;
-  categorySex?: string;
+  name: string;
+  description: string;
+  categorySex: string;
 }
 
 export interface ProductoModelo {
