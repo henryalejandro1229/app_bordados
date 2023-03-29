@@ -3,8 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ClienteModelo } from 'src/app/login/models/cliente.modelo';
 import { LoginService } from 'src/app/login/services/login.service';
-import { CategoryModelo } from 'src/app/productos/models/productos.modelo';
-import { ProductosService } from 'src/app/productos/services/productos.service';
 import {
   showNotifyError,
   showNotifySuccess,
@@ -55,16 +53,16 @@ export class ModalUserComponent implements OnInit {
   }
 
   submit() {
-    this.data.isNew ? this.createCategory() : this.updateCategory();
+    this.data.isNew ? this.createClient() : this.updateClient();
     this.matRef.close(true);
   }
 
-  updateCategory(): void {
+  updateClient(): void {
     this._ls.updateClient(this.id, this.form.getRawValue()).subscribe(
       (res: any) => {
         showNotifySuccess(
-          'Categoría actualizada',
-          'La categoría fue actualizada correctamente'
+          'Producto actualizado',
+          'El producto fue actualizado correctamente'
         );
       },
       (e) => {
@@ -73,16 +71,16 @@ export class ModalUserComponent implements OnInit {
     );
   }
 
-  createCategory(): void {
+  createClient(): void {
     this._ls.createClient(this.form.getRawValue()).subscribe(
       (res: any) => {
         showNotifySuccess(
-          'Categoría creada',
-          'La categoría fue creada correctamente'
+          'Producto creado',
+          'El producto fue creado correctamente'
         );
       },
       (e) => {
-        showNotifyError('Error al crear categoría', 'Intente mas tarde');
+        showNotifyError('Error al crear producto', 'Intente mas tarde');
       }
     );
   }

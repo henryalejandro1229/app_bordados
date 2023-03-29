@@ -1,7 +1,7 @@
 <main>
     <header class="modal-header">
         <div class="modal-title">
-            {{data.isNew ? 'Nueva': 'Editar'}} producto
+            {{data.isNew ? 'Nuevo': 'Editar'}} producto
         </div>
 
         <button mat-icon-button mat-dialog-close tabindex="-1">
@@ -43,7 +43,7 @@
                 <mat-form-field class="col-md-12" color="primary" appearance="outline">
                     <mat-label>Categoría</mat-label>
                     <mat-select formControlName="categoryID">
-                        <mat-option *ngFor="let cat of objCategories" [value]="cat._id.$oid">{{cat.name}}</mat-option>
+                        <mat-option *ngFor="let cat of objCategories" [value]="cat._id.$oid">{{cat.name}} - {{getTypeSex(cat.categorySex)}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">

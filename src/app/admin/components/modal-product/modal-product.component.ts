@@ -100,4 +100,8 @@ export class ModalProductComponent implements OnInit {
       }
     );
   }
+
+  getTypeSex(type: string): string {
+    return type === 'man' ? 'Caballero' : 'Dama';
+  }
 }
