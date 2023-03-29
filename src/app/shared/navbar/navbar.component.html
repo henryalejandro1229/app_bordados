@@ -11,7 +11,7 @@
       <a href="/home" class="navbar-brand mt-2 mt-lg-0">
         <img src="../../../assets/resources/image-logo.jpeg" height="60" loading="lazy" />
       </a>
-      <ul *ngIf="!isAdmin" class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul *ngIf="isAuth && !isAdmin || !isAuth" class="navbar-nav me-auto mb-2 mb-lg-0">
         <button class="nav-link" mat-button (click)="routerLink('/home')">
           INICIO
         </button>

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ModalCerrarSesionComponent } from '../modal-cerrar-sesion/modal-cerrar-sesion.component';
 import { AuthService } from '../services/auth.service';
-import swal from 'sweetalert2';
-import { showModalConfirmation } from '../functions/Utilities';
+import { showModalConfirmation, showNotifySuccess } from '../functions/Utilities';
 
 @Component({
   selector: 'app-navbar',
@@ -33,6 +31,7 @@ export class NavbarComponent implements OnInit {
       if (res) {
         this._auth.logout();
         this.verifiedAuth();
+        showNotifySuccess('Se cerró sesión correctamente', '');
       }
     })
   }
