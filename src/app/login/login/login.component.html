@@ -2,9 +2,7 @@
 <main class="login-page bg-light">
   <section class="login-body">
     <section class="login-logo">
-      <a href="/home" style="cursor: pointer"
-        ><img src="../../../assets/resources/image-logo.jpeg" alt=""
-      /></a>
+      <a href="/home" style="cursor: pointer"><img src="../../../assets/resources/image-logo.jpeg"/></a>
     </section>
     <section class="login-container shadow-lg">
       <form [formGroup]="form" (ngSubmit)="login()">
@@ -17,34 +15,16 @@
             <div class="form-usuario">
               <mat-form-field appearance="outline" class="form-full">
                 <mat-label>Usuario</mat-label>
-                <input
-                  matInput
-                  (focus)="usuarioTyping = true"
-                  (blur)="usuarioTyping = false"
-                  formControlName="email"
-                  placeholder="Ingrese su correo electrónico"
-                  #inputUsuario
-                  type="email"
-                />
+                <input matInput formControlName="email" placeholder="Ingrese su correo electrónico" #inputUsuario
+                  type="email" />
               </mat-form-field>
             </div>
             <div class="form-password">
               <mat-form-field appearance="outline" class="form-full">
                 <mat-label>Contraseña</mat-label>
-                <input
-                  matInput
-                  #pass
-                  matInput
-                  [type]="clear ? 'text' : 'password'"
-                  formControlName="password"
-                  placeholder="Ingrese su contraseña"
-                />
-                <mat-icon
-                  class="puntero"
-                  (click)="clear = !clear"
-                  matSuffix
-                  [color]="clear ? 'primary' : ''"
-                >
+                <input matInput #pass matInput [type]="clear ? 'text' : 'password'" formControlName="password"
+                  placeholder="Ingrese su contraseña" />
+                <mat-icon class="puntero" (click)="clear = !clear" matSuffix [color]="clear ? 'primary' : ''">
                   {{ clear ? "visibility" : "visibility_off" }}
                 </mat-icon>
               </mat-form-field>
@@ -54,11 +34,7 @@
             </div>
           </section>
           <section class="action">
-            <button
-              type="submit"
-              class="k-btn-primary k-btn-pry-pink"
-              mat-flat-button
-            >
+            <button type="submit" class="k-btn-primary k-btn-pry-pink" mat-flat-button>
               Iniciar sesión
             </button>
           </section>

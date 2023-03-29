@@ -18,10 +18,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   clear: boolean = false;
-  sending = false;
-  fecha = new Date();
-  passwordTyping = false;
-  usuarioTyping = false;
 
   constructor(
     private readonly _loginService: LoginService,
@@ -38,7 +34,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.form.valid) {
-      this.sending = true;
       this._loginService
         .login(this.form.value.email, this.form.value.password)
         .subscribe(
