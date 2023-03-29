@@ -14,6 +14,10 @@ export class ProductosService {
     return this.http.get(`${environment.url}/products/getCategoriesPerSex.php?categorySex=${category}`);
   }
 
+  getCategories(): Observable<any> {
+    return this.http.get(`${environment.url}/products/getCategories.php`);
+  }
+
   getProductsPerCategory(category: string): Observable<any> {
     return this.http.get(`${environment.url}/products/getProductsPerCategory.php?id=${category}`);
   }

@@ -7,6 +7,9 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ProductsComponent } from './pages/products/products.component';
 import { UsersComponent } from './pages/users/users.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
+import { ModalCategoryComponent } from './components/modal-category/modal-category.component';
+import { ModalProductComponent } from './components/modal-product/modal-product.component';
+import { ModalUserComponent } from './components/modal-user/modal-user.component';
 
 
 
@@ -16,7 +19,10 @@ import { CategoriesComponent } from './pages/categories/categories.component';
     AdminComponent,
     ProductsComponent,
     UsersComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    ModalCategoryComponent,
+    ModalProductComponent,
+    ModalUserComponent
   ],
   imports: [
     CommonModule,
