@@ -37,7 +37,7 @@ export class RegisterProcessComponent implements OnInit {
       let id: string = param['id'];
       if (!id) {
         showNotifyError('Acceso denegado', 'Ruta no válida');
-        this._router.navigate(['/home']);
+        this._router.navigate(['/login']);
         return;
       }
       this.consultaInfo(id);
