@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Optional } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ClienteModelo } from 'src/app/login/models/cliente.modelo';
+import { LoginService } from 'src/app/login/services/login.service';
+import { CategoryModelo } from 'src/app/productos/models/productos.modelo';
+import { ProductosService } from 'src/app/productos/services/productos.service';
+import {
+  showNotifyError,
+  showNotifySuccess,
+} from 'src/app/shared/functions/Utilities';
 
 @Component({
   selector: 'app-modal-user',
@@ -7,9 +17,74 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalUserComponent implements OnInit {
 
-  constructor() { }
+  form!: FormGroup;
+  id!: string;
+
+  constructor(
+    private matRef: MatDialogRef<ModalUserComponent>,
+    private _ls: LoginService,
+    @Inject(MAT_DIALOG_DATA)
+    @Optional()
+    public data: {
+      objCliente: ClienteModelo;
+      isNew: boolean;
+    }
+  ) {
+    this.form = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      isAdmin: new FormControl('', []),
+    });
+  }
 
   ngOnInit(): void {
+    if (this.data.objCliente) {
+      this.id = this.data.objCliente._id.$oid;
+      this.form.controls['name'].setValue(this.data.objCliente.name);
+      this.form.controls['email'].setValue(
+        this.data.objCliente.email
+      );
+      this.form.controls['password'].setValue(
+        this.data.objCliente.password
+      );
+      this.form.controls['isAdmin'].setValue(
+        this.data.objCliente.isAdmin
+      );
+    }
+  }
+
+  submit() {
+    this.data.isNew ? this.createCategory() : this.updateCategory();
+    this.matRef.close(true);
+  }
+
+  updateCategory(): void {
+    this._ls.updateClient(this.id, this.form.getRawValue()).subscribe(
+      (res: any) => {
+        showNotifySuccess(
+          'Categoría actualizada',
+          'La categoría fue actualizada correctamente'
+        );
+      },
+      (e) => {
+        showNotifyError('Error al actualizar', 'Intente mas tarde');
+      }
+    );
+  }
+
+  createCategory(): void {
+    this._ls.createClient(this.form.getRawValue()).subscribe(
+      (res: any) => {
+        showNotifySuccess(
+          'Categoría creada',
+          'La categoría fue creada correctamente'
+        );
+      },
+      (e) => {
+        showNotifyError('Error al crear categoría', 'Intente mas tarde');
+      }
+    );
   }
 
 }

@@ -26,6 +26,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgModule } from '@angular/core';
 // import {MatDatetimepickerModule, MatNativeDatetimeModule} from '@mat-datetimepicker/core';
 // import {MatMomentDatetimeModule} from '@mat-datetimepicker/moment';
@@ -61,6 +62,7 @@ import { NgModule } from '@angular/core';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    MatSlideToggleModule,
   ],
   exports: [
     MatAutocompleteModule,
@@ -91,6 +93,7 @@ import { NgModule } from '@angular/core';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    MatSlideToggleModule,
   ],
   declarations: [],
 })

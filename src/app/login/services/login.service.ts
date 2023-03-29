@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { ClienteModelo } from '../models/cliente.modelo';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,29 @@ export class LoginService {
 
   getUsuarios(): Observable<any> {
     return this.http.get(`${environment.url}/users/read.php`);
+  }
+
+  createClient(formData: ClienteModelo): Observable<any> {
+    let params = new HttpParams()
+    .append('name', formData.name)
+    .append('email', formData.email)
+    .append('password', formData.password)
+    .append('isAdmin', formData.isAdmin)
+    return this.http.get(`${environment.url}/users/createClient.php`, {
+      params,
+    });
+  }
+
+  updateClient(id: string, formData: ClienteModelo): Observable<any> {
+    let params = new HttpParams()
+      .append('id', id)
+      .append('name', formData.name)
+      .append('email', formData.email)
+      .append('password', formData.password)
+      .append('isAdmin', formData.isAdmin);
+    return this.http.get(`${environment.url}/users/updateClient.php`, {
+      params,
+    });
   }
 
   validateEmail(email: string): Observable<any> {
