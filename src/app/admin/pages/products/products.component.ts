@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoModelo } from 'src/app/productos/models/productos.modelo';
+import { CategoryModelo, ProductoModelo } from 'src/app/productos/models/productos.modelo';
 import { ModalProductComponent } from '../../components/modal-product/modal-product.component';
 import { showNotifyError } from 'src/app/shared/functions/Utilities';
 import { ProductosService } from 'src/app/productos/services/productos.service';
@@ -16,12 +16,14 @@ export class ProductsComponent implements OnInit {
     'position',
     'name',
     'description',
+    'categoria',
     'categorySex',
     'marca',
     'precio',
     'options',
   ];
   objProducts!: ProductoModelo[];
+  objCategories!: CategoryModelo[];
 
   constructor(private _ps: ProductosService, private matDialog: MatDialog) {}
 
@@ -38,10 +40,26 @@ export class ProductsComponent implements OnInit {
         showNotifyError('Error consultar información', 'Intente mas tarde');
       }
     );
+    this._ps.getCategories().subscribe(
+      (res: CategoryModelo[]) => {
+        this.objCategories = res;
+      },
+      (e) => {
+        showNotifyError('Error consultar información', 'Intente mas tarde');
+      }
+    );
   }
 
   getTypeSex(type: string): string {
     return type === 'man' ? 'Caballero' : 'Dama';
+  }
+
+  getCategoria(id: string): string {
+    if(this.objCategories && this.objCategories.length > 0){
+      let category = this.objCategories.find(cat => cat._id.$oid === id);
+      return category? category.name : '';
+    }
+    return '';
   }
 
   openModal(isNew: boolean, producto?: ProductoModelo) {

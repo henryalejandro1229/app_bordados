@@ -40,6 +40,12 @@
                         <mat-option value="man">Caballero</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <mat-form-field class="col-md-12" color="primary" appearance="outline">
+                    <mat-label>Categoría</mat-label>
+                    <mat-select formControlName="categoryID">
+                        <mat-option *ngFor="let cat of objCategories" [value]="cat._id.$oid">{{cat.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Marca</mat-label>
                     <input matInput type="text" placeholder="Marca" formControlName="marca" />

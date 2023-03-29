@@ -49,6 +49,7 @@ export class ProductosService {
     let params = new HttpParams()
     .append('title', formData.title)
     .append('description', formData.description)
+    .append('categoryID', formData.categoryID)
     .append('categorySex', formData.categorySex)
     .append('precio', formData.precio)
     .append('imageUrl', imageUrl)
@@ -63,6 +64,7 @@ export class ProductosService {
       .append('id', id)
       .append('title', formData.title)
       .append('description', formData.description)
+      .append('categoryID', formData.categoryID)
       .append('categorySex', formData.categorySex)
       .append('precio', formData.precio)
       .append('marca', formData.marca);

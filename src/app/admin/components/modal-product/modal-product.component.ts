@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ProductoModelo } from 'src/app/productos/models/productos.modelo';
+import { CategoryModelo, ProductoModelo } from 'src/app/productos/models/productos.modelo';
 import { ProductosService } from 'src/app/productos/services/productos.service';
 import {
   showNotifyError,
@@ -16,6 +16,7 @@ import {
 export class ModalProductComponent implements OnInit {
   form!: FormGroup;
   id!: string;
+  objCategories!: CategoryModelo[];
 
   constructor(
     private matRef: MatDialogRef<ModalProductComponent>,
@@ -33,10 +34,12 @@ export class ModalProductComponent implements OnInit {
       categorySex: new FormControl('', [Validators.required]),
       marca: new FormControl('', [Validators.required]),
       precio: new FormControl('', [Validators.required]),
+      categoryID: new FormControl('', [Validators.required]),
     });
   }
 
   ngOnInit(): void {
+    this.consultaInfo();
     if (this.data.objProduct) {
       this.id = this.data.objProduct._id.$oid;
       this.form.controls['title'].setValue(this.data.objProduct.title);
@@ -46,9 +49,23 @@ export class ModalProductComponent implements OnInit {
       this.form.controls['categorySex'].setValue(
         this.data.objProduct.categorySex
       );
+      this.form.controls['categoryID'].setValue(
+        this.data.objProduct.categoryID
+      );
       this.form.controls['marca'].setValue(this.data.objProduct.marca);
       this.form.controls['precio'].setValue(this.data.objProduct.precio);
     }
+  }
+
+  consultaInfo(): void {
+    this._ps.getCategories().subscribe(
+      (res: CategoryModelo[]) => {
+        this.objCategories = res;
+      },
+      (e) => {
+        showNotifyError('Error consultar información', 'Intente mas tarde');
+      }
+    );
   }
 
   submit() {
