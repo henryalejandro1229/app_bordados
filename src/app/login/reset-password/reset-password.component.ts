@@ -19,7 +19,7 @@ export class ResetPasswordComponent implements OnInit {
   form: FormGroup;
   clear: boolean = false;
   clearConfirm: boolean = false;
-  objCliente: ClienteModelo = { _id: undefined };
+  objCliente!: ClienteModelo;
   pwdsCoinciden = false;
   pwdsValue = false;
 

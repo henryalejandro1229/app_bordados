@@ -14,6 +14,10 @@ export class AuthService {
     return localStorage.setItem('token', token);
   }
 
+  setIsAdminLS(value: string) {
+    return localStorage.setItem('isAdmin', value);
+  }
+
   isAuth(): boolean {
     let token = this.getTokenLocalStorage();
     if (token && token?.length > 0) {

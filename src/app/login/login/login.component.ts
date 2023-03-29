@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
               let token: string = res[0]._id.$oid;
               showNotifySuccess('Bienvenido', '');
               this._auth.setTokenLocalStorage(token);
+              res[0].isAdmin ? this._auth.setIsAdminLS('true') : this._auth.setIsAdminLS('false');
               this._router.navigate(['/home']);
             } else {
               showNotifyWarning(
