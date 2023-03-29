@@ -5,7 +5,7 @@ import { CategoryModelo } from 'src/app/productos/models/productos.modelo';
 import { ProductosService } from 'src/app/productos/services/productos.service';
 import {
   showNotifyError,
-  showSwalSuccess,
+  showNotifySuccess,
 } from 'src/app/shared/functions/Utilities';
 
 @Component({
@@ -55,7 +55,7 @@ export class ModalCategoryComponent implements OnInit {
   updateCategory(): void {
     this._ps.updateCategory(this.id, this.form.getRawValue()).subscribe(
       (res: any) => {
-        showSwalSuccess(
+        showNotifySuccess(
           'Categoría actualizada',
           'La categoría fue actualizada correctamente'
         );
@@ -69,7 +69,7 @@ export class ModalCategoryComponent implements OnInit {
   createCategory(): void {
     this._ps.createCategory(this.form.getRawValue()).subscribe(
       (res: any) => {
-        showSwalSuccess(
+        showNotifySuccess(
           'Categoría creada',
           'La categoría fue creada correctamente'
         );

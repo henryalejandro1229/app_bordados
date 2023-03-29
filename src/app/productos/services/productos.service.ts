@@ -21,10 +21,13 @@ export class ProductosService {
   }
 
   createCategory(formData: CategoryModelo): Observable<any> {
-    return this.http.put(
-      `${environment.url}/products/createCategory.php`,
-      formData
-    );
+    let params = new HttpParams()
+      .append('name', formData.name)
+      .append('description', formData.description)
+      .append('categorySex', formData.categorySex);
+    return this.http.get(`${environment.url}/products/createCategory.php`, {
+      params,
+    });
   }
 
   updateCategory(id: string, formData: CategoryModelo): Observable<any> {
