@@ -48,11 +48,11 @@ export class ProductsComponent implements OnInit {
     this.matDialog
       .open(ModalProductComponent, {
         panelClass: 'sinpadding',
-        width: '500px',
+        width: '600px',
         height: 'auto',
         data: {
           isNew,
-          objCategory: producto,
+          objProduct: producto,
         },
       })
       .afterClosed()

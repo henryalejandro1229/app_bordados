@@ -24,7 +24,7 @@ export class ModalCategoryComponent implements OnInit {
     @Optional()
     public data: {
       objCategory: CategoryModelo;
-      isNew: CategoryModelo;
+      isNew: boolean;
     }
   ) {
     this.form = new FormGroup({
