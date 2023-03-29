@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
       (res) => {
         this.categoriesMan = res[0];
         this.categoriesWoman = res[1];
+        this.limitaCategoria();
       },
       (e) => {
         showNotifyError('Error al registrar', 'Intente mas tarde');
@@ -50,5 +51,14 @@ export class HomeComponent implements OnInit {
 
   verCategoria(category: CategoryModelo) {
     this._router.navigate(['/home/list-categories/category', category._id.$oid]);
+  }
+
+  limitaCategoria() {
+    if(this.categoriesMan.length > 3) {
+      this.categoriesMan.length = 3;
+    }
+    if(this.categoriesWoman.length > 3) {
+      this.categoriesMan.length = 3;
+    }
   }
 }

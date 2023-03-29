@@ -61,8 +61,8 @@ export class ModalUserComponent implements OnInit {
     this._ls.updateClient(this.id, this.form.getRawValue()).subscribe(
       (res: any) => {
         showNotifySuccess(
-          'Producto actualizado',
-          'El producto fue actualizado correctamente'
+          'Cliente actualizado',
+          'El cliente fue actualizado correctamente'
         );
       },
       (e) => {
@@ -75,12 +75,12 @@ export class ModalUserComponent implements OnInit {
     this._ls.createClient(this.form.getRawValue()).subscribe(
       (res: any) => {
         showNotifySuccess(
-          'Producto creado',
-          'El producto fue creado correctamente'
+          'Cliente creado',
+          'El cliente fue creado correctamente'
         );
       },
       (e) => {
-        showNotifyError('Error al crear producto', 'Intente mas tarde');
+        showNotifyError('Error al crear cliente', 'Intente mas tarde');
       }
     );
   }

@@ -10,6 +10,7 @@ import { MisionVisionComponent } from './mision-vision/mision-vision.component';
 import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalCerrarSesionComponent } from './modal-cerrar-sesion/modal-cerrar-sesion.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ModalCerrarSesionComponent } from './modal-cerrar-sesion/modal-cerrar-s
     MisionVisionComponent,
     PreguntasFrecuentesComponent,
     ModalCerrarSesionComponent,
+    PedidosComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -40,6 +42,7 @@ import { ModalCerrarSesionComponent } from './modal-cerrar-sesion/modal-cerrar-s
     PreguntasFrecuentesComponent,
     ReactiveFormsModule,
     FormsModule,
+    PedidosComponent,
   ],
 })
 export class SharedModule {}
