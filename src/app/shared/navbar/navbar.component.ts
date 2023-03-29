@@ -13,6 +13,7 @@ import { showModalConfirmation } from '../functions/Utilities';
 })
 export class NavbarComponent implements OnInit {
   isAuth = false;
+  isAdmin = false;
   constructor(
     private router: Router,
     private matDialog: MatDialog,
@@ -38,5 +39,6 @@ export class NavbarComponent implements OnInit {
 
   verifiedAuth(): void {
     this.isAuth = this._auth.isAuth();
+    this.isAdmin = this._auth.isAdmin();
   }
 }
