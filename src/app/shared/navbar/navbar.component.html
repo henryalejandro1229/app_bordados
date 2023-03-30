@@ -1,12 +1,48 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Toggle button -->
-    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+    <button class="navbar-toggler" [matMenuTriggerFor]="matPryMenuPublic" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <mat-icon>menu</mat-icon>
     </button>
+    <mat-menu #matPryMenuPublic="matMenu">
+      <div *ngIf="isAuth && !isAdmin || !isAuth">
+        <button class="nav-link" mat-menu-item (click)="routerLink('/home')">
+          INICIO
+        </button>
+        <button mat-menu-item class="nav-link" [matMenuTriggerFor]="matMenuAboutResp">
+          ACERCA DE NOSOTROS
+        </button>
+        <mat-menu #matMenuAboutResp="matMenu">
+          <button mat-menu-item (click)="routerLink('/aviso-privacidad')">AVISO DE PRIVACIDAD</button>
+          <button mat-menu-item (click)="routerLink('/mision-vision')">MISIÓN Y VISIÓN</button>
+          <button mat-menu-item (click)="routerLink('/preguntas-frecuentes')">PREGUNTAS FRECUENTES</button>
+        </mat-menu>
+        <button class="nav-link" mat-menu-item [matMenuTriggerFor]="matMenuMujerResp">
+          MUJER
+        </button>
+        <mat-menu #matMenuMujerResp="matMenu">
+          <button *ngFor="let catWoman of categoriesWoman" (click)="verCategoria(catWoman)" mat-menu-item>{{catWoman.name}}</button>
+        </mat-menu>
+        <button class="nav-link" mat-menu-item [matMenuTriggerFor]="matMenuHombreResp">
+          HOMBRE
+        </button>
+        <mat-menu #matMenuHombreResp="matMenu">
+          <button *ngFor="let catMan of categoriesMan" (click)="verCategoria(catMan)" mat-menu-item>{{catMan.name}}</button>
+        </mat-menu>
+        <button class="nav-link" mat-menu-item (click)="routerLink('/pedidos')">
+          PEDIDOS
+        </button>
+      </div>
+      <div *ngIf="isAdmin && isAuth">
+        <button class="nav-link" mat-menu-item (click)="routerLink('/admin')">INICIO</button>
+        <button class="nav-link" mat-menu-item (click)="routerLink('/admin/categories')">CATEGORIAS</button>
+        <button class="nav-link" mat-menu-item (click)="routerLink('/admin/products')">PRODUCTOS</button>
+        <button class="nav-link" mat-menu-item (click)="routerLink('/admin/users')">USUARIOS</button>
+      </div>
+    </mat-menu>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <a href="/home" class="navbar-brand mt-2 mt-lg-0">
         <img src="../../../assets/resources/image-logo.jpeg" height="60" loading="lazy" />
@@ -64,8 +100,6 @@
           <button class="nav-link" mat-button (click)="routerLink('/admin/users')">USUARIOS</button>
         </li>
       </ul>
-    </div>
-    <div class="d-flex align-items-center">
       <div class="d-flex mx-4">
         <form class="d-flex input-group w-auto mx-2">
           <input type="search" class="form-control form-control-sm rounded" placeholder="Search" aria-label="Search"
@@ -75,7 +109,8 @@
           <mat-icon>search</mat-icon>
         </button>
       </div>
-
+    </div>
+    <div class="d-flex align-items-center">
       <button (click)="routerLink('/login')" *ngIf="!isAuth" mat-button><mat-icon matSuffix>login</mat-icon> INICIAR
         SESIÓN</button>
       <div class="dropdown" *ngIf="isAuth">
