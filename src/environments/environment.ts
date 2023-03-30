@@ -5,7 +5,7 @@ export const host = '127.0.0.1';
 export const hostEmail = 'localhost:4000'
 export const environment = {
   production: false,
-  url: `bordados_app_backend/api`,
+  url: `http://sastrerialospajaritos.proyectowebuni.com/api`,
   urlEmail: `https://app-los-pajaritos-server-email-production.up.railway.app/bordados_app_backend`,
 };
 
