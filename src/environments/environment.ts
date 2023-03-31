@@ -6,6 +6,7 @@ export const hostEmail = 'localhost:4000'
 export const environment = {
   production: false,
   url: `bordados_app_backend/api`,
+  urlImg: `http://localhost/bordados_app_backend/api/products/imageProducts/`,
   urlEmail: `https://app-los-pajaritos-server-email-production.up.railway.app/bordados_app_backend`,
 };
 

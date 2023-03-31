@@ -16,3 +16,8 @@ export interface ProductoModelo {
   precio: number;
   codigo: string;
 }
+
+export interface ImagenModelo {
+  nombreArchivo: string;
+  base64textString: string;
+}

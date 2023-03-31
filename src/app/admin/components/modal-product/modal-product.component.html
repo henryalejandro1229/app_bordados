@@ -20,10 +20,23 @@
 
         <form [formGroup]="form">
             <div class="row">
+                <!-- <label>Nombre archivo:</label>
+                <input type="text" [(ngModel)]="archivo.nombre" name="file">
+                <br><br>
+                <input type="file" accept="image/*" (change)="seleccionarArchivo($event)">
+                <br><br>
+                <button> SUBIR ARCHIVO </button> -->
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Nombre del producto</mat-label>
                     <input matInput type="text" placeholder="Nombre de la categoría" formControlName="title" />
                 </mat-form-field>
+                <div class="col-xs-12 mb-4" color="primary" appearance="outline">
+                    <label for="formFile" class="form-label">Imagen del producto</label>
+                    <div *ngIf="!data.isNew" class="col-xs-12 border d-flex justify-content-center mb-3">
+                        <img src="{{urlImage}}/{{imageName}}" class="img-fluid" alt="Imagen del producto">
+                    </div>
+                    <input class="form-control" type="file" accept="image/*" (change)="seleccionarImagen($event)">
+                </div>
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Descripción</mat-label>
                     <input matInput type="text" placeholder="Descripción de la categoría"
@@ -43,7 +56,8 @@
                 <mat-form-field class="col-md-12" color="primary" appearance="outline">
                     <mat-label>Categoría</mat-label>
                     <mat-select formControlName="categoryID">
-                        <mat-option *ngFor="let cat of objCategories" [value]="cat._id.$oid">{{cat.name}} - {{getTypeSex(cat.categorySex)}}</mat-option>
+                        <mat-option *ngFor="let cat of objCategories" [value]="cat._id.$oid">{{cat.name}} -
+                            {{getTypeSex(cat.categorySex)}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">

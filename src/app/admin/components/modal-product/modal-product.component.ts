@@ -1,12 +1,17 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CategoryModelo, ProductoModelo } from 'src/app/productos/models/productos.modelo';
+import {
+  CategoryModelo,
+  ProductoModelo,
+  ImagenModelo,
+} from 'src/app/productos/models/productos.modelo';
 import { ProductosService } from 'src/app/productos/services/productos.service';
 import {
   showNotifyError,
   showNotifySuccess,
 } from 'src/app/shared/functions/Utilities';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-modal-product',
@@ -14,9 +19,15 @@ import {
   styleUrls: ['./modal-product.component.scss'],
 })
 export class ModalProductComponent implements OnInit {
+  urlImage = environment.urlImg;
+  imageName = '';
   form!: FormGroup;
   id!: string;
   objCategories!: CategoryModelo[];
+  objImagen: ImagenModelo = {
+    nombreArchivo: '',
+    base64textString: '',
+  };
 
   constructor(
     private matRef: MatDialogRef<ModalProductComponent>,
@@ -54,6 +65,7 @@ export class ModalProductComponent implements OnInit {
       );
       this.form.controls['marca'].setValue(this.data.objProduct.marca);
       this.form.controls['precio'].setValue(this.data.objProduct.precio);
+      this.imageName = this.data.objProduct.imageUrl;
     }
   }
 
@@ -74,12 +86,13 @@ export class ModalProductComponent implements OnInit {
   }
 
   updateProduct(): void {
-    this._ps.updateProduct(this.id, this.form.getRawValue()).subscribe(
+    this._ps.updateProduct(this.id, this.form.getRawValue(), this.objImagen.nombreArchivo).subscribe(
       (res: any) => {
         showNotifySuccess(
           'Producto actualizado',
           'El producto fue actualizado correctamente'
         );
+        this.uploadImage();
       },
       (e) => {
         showNotifyError('Error al actualizar', 'Intente mas tarde');
@@ -88,12 +101,13 @@ export class ModalProductComponent implements OnInit {
   }
 
   createProduct(): void {
-    this._ps.createProduct(this.form.getRawValue(), '').subscribe(
+    this._ps.createProduct(this.form.getRawValue(), this.objImagen.nombreArchivo).subscribe(
       (res: any) => {
         showNotifySuccess(
           'Producto creado',
           'El producto fue creado correctamente'
         );
+        this.uploadImage();
       },
       (e) => {
         showNotifyError('Error al crear categoría', 'Intente mas tarde');
@@ -103,5 +117,34 @@ export class ModalProductComponent implements OnInit {
 
   getTypeSex(type: string): string {
     return type === 'man' ? 'Caballero' : 'Dama';
+  }
+
+  seleccionarImagen(event: any) {
+    const files = event.target.files;
+    const file = files[0];
+    console.log(file);
+
+    this.objImagen.nombreArchivo = file.name;
+
+    if (files && file) {
+      var reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  _handleReaderLoaded(readerEvent: any) {
+    var binaryString = readerEvent.target.result;
+    this.objImagen.base64textString = btoa(binaryString);
+  }
+
+  uploadImage() {
+    console.log(this.objImagen);
+    this._ps.uploadFile(this.objImagen).subscribe(
+      (datos) => {},
+      (e) => {
+        showNotifyError('Error al subir imagen', 'Intente mas tarde');
+      }
+    );
   }
 }

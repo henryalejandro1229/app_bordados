@@ -46,6 +46,10 @@
                         (click)="openModal(false , element)">
                         <mat-icon>edit</mat-icon>
                     </button>
+                    <button mat-icon-button matTooltip="Eliminar producto"
+                        (click)="deleteProduct()">
+                        <mat-icon>delete</mat-icon>
+                    </button>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>

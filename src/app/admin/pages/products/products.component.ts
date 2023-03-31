@@ -80,4 +80,8 @@ export class ProductsComponent implements OnInit {
       });
   }
 
+  deleteProduct() {
+    
+  }
+
 }
