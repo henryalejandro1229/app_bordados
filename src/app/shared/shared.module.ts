@@ -11,6 +11,7 @@ import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-f
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalCerrarSesionComponent } from './modal-cerrar-sesion/modal-cerrar-sesion.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { PageNoFoundComponent } from './page-no-found/page-no-found.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
     PreguntasFrecuentesComponent,
     ModalCerrarSesionComponent,
     PedidosComponent,
+    PageNoFoundComponent,
   ],
   imports: [
     ReactiveFormsModule,
