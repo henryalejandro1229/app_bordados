@@ -20,22 +20,24 @@ export class ProductosService {
     return this.http.get(`${environment.url}/products/getCategories.php`);
   }
 
-  createCategory(formData: CategoryModelo): Observable<any> {
+  createCategory(formData: CategoryModelo, imageUrl: string): Observable<any> {
     let params = new HttpParams()
       .append('name', formData.name)
       .append('description', formData.description)
-      .append('categorySex', formData.categorySex);
+      .append('categorySex', formData.categorySex)
+      .append('imageUrl', imageUrl);
     return this.http.get(`${environment.url}/products/createCategory.php`, {
       params,
     });
   }
 
-  updateCategory(id: string, formData: CategoryModelo): Observable<any> {
+  updateCategory(id: string, formData: CategoryModelo, imageUrl: string): Observable<any> {
     let params = new HttpParams()
       .append('id', id)
       .append('name', formData.name)
       .append('description', formData.description)
-      .append('categorySex', formData.categorySex);
+      .append('categorySex', formData.categorySex)
+      .append('imageUrl', imageUrl);
     return this.http.get(`${environment.url}/products/updateCategory.php`, {
       params,
     });

@@ -25,6 +25,13 @@
                     <input matInput type="text" placeholder="Nombre de la categoría" formControlName="name"/>
                 </mat-form-field>
             </div>
+            <div class="col-xs-12 mb-4" color="primary" appearance="outline">
+                <label for="formFile" class="form-label">Imagen de la categoría</label>
+                <div *ngIf="!data.isNew" class="col-xs-12 border d-flex justify-content-center mb-3">
+                    <img src="{{urlImage}}/{{imageName}}" class="img-fluid" alt="Imagen de la categoría">
+                </div>
+                <input class="form-control" type="file" accept="image/*" (change)="seleccionarImagen($event)">
+            </div>
             <div class="row">
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Descripción</mat-label>

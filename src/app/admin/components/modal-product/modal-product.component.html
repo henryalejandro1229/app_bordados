@@ -20,12 +20,6 @@
 
         <form [formGroup]="form">
             <div class="row">
-                <!-- <label>Nombre archivo:</label>
-                <input type="text" [(ngModel)]="archivo.nombre" name="file">
-                <br><br>
-                <input type="file" accept="image/*" (change)="seleccionarArchivo($event)">
-                <br><br>
-                <button> SUBIR ARCHIVO </button> -->
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Nombre del producto</mat-label>
                     <input matInput type="text" placeholder="Nombre de la categoría" formControlName="title" />
