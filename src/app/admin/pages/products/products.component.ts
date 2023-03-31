@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryModelo, ProductoModelo } from 'src/app/productos/models/productos.modelo';
 import { ModalProductComponent } from '../../components/modal-product/modal-product.component';
-import { showNotifyError } from 'src/app/shared/functions/Utilities';
+import { showModalConfirmation, showNotifyError, showNotifySuccess } from 'src/app/shared/functions/Utilities';
 import { ProductosService } from 'src/app/productos/services/productos.service';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -80,8 +80,23 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  deleteProduct() {
-    
+  deleteProduct(producto: ProductoModelo) {
+    showModalConfirmation(
+      'Eliminar producto',
+      '¿Seguro que deseas eliminar este producto?'
+    ).then((res) => {
+      if (res) {
+        this._ps.deleteProduct(producto._id.$oid).subscribe(
+          (res) => {
+            showNotifySuccess('Producto eliminado', 'El producto se eliminó correctamente');
+            this.consultaInfo();
+          },
+          (e) => {
+            showNotifyError('Error al eliminar producto', 'Intente mas tarde');
+          }
+        );
+      }
+    });
   }
 
 }

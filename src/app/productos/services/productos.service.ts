@@ -43,6 +43,12 @@ export class ProductosService {
     });
   }
 
+  deleteCategory(id: string): Observable<any> {
+    return this.http.get(
+      `${environment.url}/products/deleteCategory.php?id=${id}`
+    );
+  }
+
   getProducts(): Observable<any> {
     return this.http.get(`${environment.url}/products/getProducts.php`);
   }
@@ -74,6 +80,12 @@ export class ProductosService {
     return this.http.get(`${environment.url}/products/updateProduct.php`, {
       params,
     });
+  }
+  
+  deleteProduct(id: string): Observable<any> {
+    return this.http.get(
+      `${environment.url}/products/deleteProduct.php?id=${id}`
+    );
   }
 
   getProductsPerCategory(category: string): Observable<any> {

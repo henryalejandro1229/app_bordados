@@ -6,7 +6,7 @@
     <div class="py-4">
       <p class="h5 col-md-12 text-right fw-bold py-2">
         Dama
-        <button type="button" (click)="viewListCategories('woman')" class="mx-4 btn btn-dark">Ver todo...</button>
+        <button type="button" (click)="viewListCategories('woman')" class="mx-4 btn btn-dark">Ver todas las categorías...</button>
       </p>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-4">
         <div class="col" *ngFor="let catWoman of categoriesWoman">
@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
               <p class="h5 text-center fw-bold pt-4">{{catWoman.name}}</p>
-              <p class="h6 text-center fw-light">{{catWoman.description}}</p>
+              <p class="h6 text-center fw-light text-truncate">{{catWoman.description}}</p>
             </div>
             <div class="card-footer mt-2 d-flex justify-content-center">
               <button (click)="verCategoria(catWoman)" class="btn btn-danger my-2">Ver categoría</button>
@@ -31,7 +31,7 @@
     <div class="py-4">
       <p class="h5 col-md-12 text-right fw-bold py-2">
         Caballero
-        <button type="button" (click)="viewListCategories('man')" class="mx-4 btn btn-dark">Ver todo...</button>
+        <button type="button" (click)="viewListCategories('man')" class="mx-4 btn btn-dark">Ver todas las categorías...</button>
       </p>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-4">
         <div class="col" *ngFor="let catMan of categoriesMan">
@@ -41,7 +41,7 @@
             </div>
             <div class="card-body">
               <p class="h5 text-center fw-bold pt-4">{{catMan.name}}</p>
-              <p class="h6 text-center fw-light">{{catMan.description}}</p>
+              <p class="h6 text-center fw-light text-truncate">{{catMan.description}}</p>
             </div>
             <div class="card-footer mt-2 d-flex justify-content-center">
               <button (click)="verCategoria(catMan)" class="btn btn-danger my-2">Ver categoría</button>
