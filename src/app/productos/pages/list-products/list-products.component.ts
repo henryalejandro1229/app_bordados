@@ -4,6 +4,7 @@ import { ProductosService } from '../../services/productos.service';
 import { showNotifyError } from 'src/app/shared/functions/Utilities';
 import { CategoryModelo, ProductoModelo } from '../../models/productos.modelo';
 import { combineLatest } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-products',
@@ -11,6 +12,7 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./list-products.component.scss'],
 })
 export class ListProductsComponent implements OnInit {
+  urlImage = environment.urlImg;
   objCategory!: CategoryModelo;
   objProducts!: ProductoModelo[];
   constructor(
