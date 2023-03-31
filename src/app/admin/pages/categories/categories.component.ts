@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryModelo } from 'src/app/productos/models/productos.modelo';
 import { ProductosService } from 'src/app/productos/services/productos.service';
-import { showNotifyError } from 'src/app/shared/functions/Utilities';
+import { showModalConfirmation, showNotifyError, showNotifySuccess } from 'src/app/shared/functions/Utilities';
 import { ModalCategoryComponent } from '../../components/modal-category/modal-category.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -57,5 +57,24 @@ export class CategoriesComponent implements OnInit {
         if (res)
           this.consultaInfo();
       });
+  }
+
+  deleteCategory(categoria: CategoryModelo) {
+    showModalConfirmation(
+      'Eliminar categoría',
+      '¿Seguro que deseas eliminar esta categoría?'
+    ).then((res) => {
+      if (res) {
+        this._ps.deleteCategory(categoria._id.$oid).subscribe(
+          (res) => {
+            showNotifySuccess('Categoría eliminado', 'La categoría se eliminó correctamente');
+            this.consultaInfo();
+          },
+          (e) => {
+            showNotifyError('Error al eliminar la categoría', 'Intente mas tarde');
+          }
+        );
+      }
+    });
   }
 }
