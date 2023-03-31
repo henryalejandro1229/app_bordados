@@ -1,7 +1,10 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CategoryModelo, ImagenModelo } from 'src/app/productos/models/productos.modelo';
+import {
+  CategoryModelo,
+  ImagenModelo,
+} from 'src/app/productos/models/productos.modelo';
 import { ProductosService } from 'src/app/productos/services/productos.service';
 import {
   showNotifyError,
@@ -51,6 +54,7 @@ export class ModalCategoryComponent implements OnInit {
       this.form.controls['categorySex'].setValue(
         this.data.objCategory.categorySex
       );
+      this.imageName = this.data.objCategory.imageUrl;
     }
   }
 
@@ -60,31 +64,43 @@ export class ModalCategoryComponent implements OnInit {
   }
 
   updateCategory(): void {
-    this._ps.updateCategory(this.id, this.form.getRawValue(), this.objImagen.nombreArchivo).subscribe(
-      (res: any) => {
-        showNotifySuccess(
-          'Categoría actualizada',
-          'La categoría fue actualizada correctamente'
-        );
-      },
-      (e) => {
-        showNotifyError('Error al actualizar', 'Intente mas tarde');
-      }
-    );
+    this._ps
+      .updateCategory(
+        this.id,
+        this.form.getRawValue(),
+        this.objImagen.nombreArchivo.length
+          ? this.objImagen.nombreArchivo
+          : this.imageName
+      )
+      .subscribe(
+        (res: any) => {
+          showNotifySuccess(
+            'Categoría actualizada',
+            'La categoría fue actualizada correctamente'
+          );
+          if (this.objImagen.nombreArchivo.length > 0) this.uploadImage();
+        },
+        (e) => {
+          showNotifyError('Error al actualizar', 'Intente mas tarde');
+        }
+      );
   }
 
   createCategory(): void {
-    this._ps.createCategory(this.form.getRawValue(), this.objImagen.nombreArchivo).subscribe(
-      (res: any) => {
-        showNotifySuccess(
-          'Categoría creada',
-          'La categoría fue creada correctamente'
-        );
-      },
-      (e) => {
-        showNotifyError('Error al crear categoría', 'Intente mas tarde');
-      }
-    );
+    this._ps
+      .createCategory(this.form.getRawValue(), this.objImagen.nombreArchivo)
+      .subscribe(
+        (res: any) => {
+          showNotifySuccess(
+            'Categoría creada',
+            'La categoría fue creada correctamente'
+          );
+          if (this.objImagen.nombreArchivo.length > 0) this.uploadImage();
+        },
+        (e) => {
+          showNotifyError('Error al crear categoría', 'Intente mas tarde');
+        }
+      );
   }
 
   seleccionarImagen(event: any) {

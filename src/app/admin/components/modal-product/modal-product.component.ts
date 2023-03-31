@@ -86,33 +86,43 @@ export class ModalProductComponent implements OnInit {
   }
 
   updateProduct(): void {
-    this._ps.updateProduct(this.id, this.form.getRawValue(), this.objImagen.nombreArchivo).subscribe(
-      (res: any) => {
-        showNotifySuccess(
-          'Producto actualizado',
-          'El producto fue actualizado correctamente'
-        );
-        this.uploadImage();
-      },
-      (e) => {
-        showNotifyError('Error al actualizar', 'Intente mas tarde');
-      }
-    );
+    this._ps
+      .updateProduct(
+        this.id,
+        this.form.getRawValue(),
+        this.objImagen.nombreArchivo.length
+          ? this.objImagen.nombreArchivo
+          : this.imageName
+      )
+      .subscribe(
+        (res: any) => {
+          showNotifySuccess(
+            'Producto actualizado',
+            'El producto fue actualizado correctamente'
+          );
+          if (this.objImagen.nombreArchivo.length > 0) this.uploadImage();
+        },
+        (e) => {
+          showNotifyError('Error al actualizar', 'Intente mas tarde');
+        }
+      );
   }
 
   createProduct(): void {
-    this._ps.createProduct(this.form.getRawValue(), this.objImagen.nombreArchivo).subscribe(
-      (res: any) => {
-        showNotifySuccess(
-          'Producto creado',
-          'El producto fue creado correctamente'
-        );
-        this.uploadImage();
-      },
-      (e) => {
-        showNotifyError('Error al crear categoría', 'Intente mas tarde');
-      }
-    );
+    this._ps
+      .createProduct(this.form.getRawValue(), this.objImagen.nombreArchivo)
+      .subscribe(
+        (res: any) => {
+          showNotifySuccess(
+            'Producto creado',
+            'El producto fue creado correctamente'
+          );
+          if (this.objImagen.nombreArchivo.length > 0) this.uploadImage();
+        },
+        (e) => {
+          showNotifyError('Error al crear categoría', 'Intente mas tarde');
+        }
+      );
   }
 
   getTypeSex(type: string): string {

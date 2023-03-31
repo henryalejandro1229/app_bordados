@@ -5,6 +5,7 @@ import { ProductosService } from 'src/app/productos/services/productos.service';
 import { showNotifyError } from 'src/app/shared/functions/Utilities';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { combineLatest } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  urlImage = environment.urlImg;
   categoriesMan!: CategoryModelo[];
   categoriesWoman!: CategoryModelo[];
 
@@ -58,7 +60,7 @@ export class HomeComponent implements OnInit {
       this.categoriesMan.length = 3;
     }
     if(this.categoriesWoman.length > 3) {
-      this.categoriesMan.length = 3;
+      this.categoriesWoman.length = 3;
     }
   }
 }

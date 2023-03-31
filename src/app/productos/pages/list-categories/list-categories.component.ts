@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { ProductosService } from '../../services/productos.service';
 import { CategoryModelo, ProductoModelo } from '../../models/productos.modelo';
 import { showNotifyError } from 'src/app/shared/functions/Utilities';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-categories',
@@ -11,6 +12,7 @@ import { showNotifyError } from 'src/app/shared/functions/Utilities';
   styleUrls: ['./list-categories.component.scss'],
 })
 export class ListCategoriesComponent implements OnInit {
+  urlImage = environment.urlImg;
   objCategories!: CategoryModelo[];
   typeCat! : string | any;
   constructor(

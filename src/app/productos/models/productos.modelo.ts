@@ -3,6 +3,7 @@ export interface CategoryModelo {
   name: string;
   description: string;
   categorySex: string;
+  imageUrl: string;
 }
 
 export interface ProductoModelo {

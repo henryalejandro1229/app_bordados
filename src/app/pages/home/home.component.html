@@ -11,8 +11,9 @@
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-4">
         <div class="col" *ngFor="let catWoman of categoriesWoman">
           <div class="card h-100 shadow hover-shadow">
-            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" alt="Hollywood Sign on The Hill"
-              class="card-img-top" />
+            <div class="container-image border-bottom">
+              <img src="{{urlImage}}/{{catWoman.imageUrl}}">
+            </div>
             <div class="card-body">
               <p class="h5 text-center fw-bold pt-4">{{catWoman.name}}</p>
               <p class="h6 text-center fw-light">{{catWoman.description}}</p>
@@ -35,8 +36,9 @@
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-4">
         <div class="col" *ngFor="let catMan of categoriesMan">
           <div class="card h-100 shadow hover-shadow">
-            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" alt="Hollywood Sign on The Hill"
-              class="card-img-top" />
+            <div class="container-image border-bottom">
+              <img src="{{urlImage}}/{{catMan.imageUrl}}">
+            </div>
             <div class="card-body">
               <p class="h5 text-center fw-bold pt-4">{{catMan.name}}</p>
               <p class="h6 text-center fw-light">{{catMan.description}}</p>
