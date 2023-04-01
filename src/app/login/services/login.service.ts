@@ -37,6 +37,12 @@ export class LoginService {
     });
   }
 
+  deleteClient(id: string): Observable<any> {
+    return this.http.get(
+      `${environment.url}/users/deleteClient.php?id=${id}`
+    );
+  }
+
   validateEmail(email: string): Observable<any> {
     return this.http.get(
       `${environment.url}/users/read_single.php?email=${email}`
