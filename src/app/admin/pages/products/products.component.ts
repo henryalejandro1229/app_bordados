@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModelo, ProductoModelo } from 'src/app/productos/models/productos.modelo';
+import {
+  CategoryModelo,
+  ProductoModelo,
+} from 'src/app/productos/models/productos.modelo';
 import { ModalProductComponent } from '../../components/modal-product/modal-product.component';
-import { showModalConfirmation, showNotifyError, showNotifySuccess } from 'src/app/shared/functions/Utilities';
+import {
+  showModalConfirmation,
+  showNotifyError,
+  showNotifySuccess,
+} from 'src/app/shared/functions/Utilities';
 import { ProductosService } from 'src/app/productos/services/productos.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-
   displayedColumns: string[] = [
     'position',
     'name',
@@ -19,6 +25,7 @@ export class ProductsComponent implements OnInit {
     'categoria',
     'categorySex',
     'marca',
+    'talla',
     'precio',
     'options',
   ];
@@ -55,9 +62,9 @@ export class ProductsComponent implements OnInit {
   }
 
   getCategoria(id: string): string {
-    if(this.objCategories && this.objCategories.length > 0){
-      let category = this.objCategories.find(cat => cat._id.$oid === id);
-      return category? category.name : '';
+    if (this.objCategories && this.objCategories.length > 0) {
+      let category = this.objCategories.find((cat) => cat._id.$oid === id);
+      return category ? category.name : '';
     }
     return '';
   }
@@ -75,8 +82,7 @@ export class ProductsComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((res) => {
-        if (res)
-          this.consultaInfo();
+        if (res) this.consultaInfo();
       });
   }
 
@@ -88,7 +94,10 @@ export class ProductsComponent implements OnInit {
       if (res) {
         this._ps.deleteProduct(producto._id.$oid).subscribe(
           (res) => {
-            showNotifySuccess('Producto eliminado', 'El producto se eliminó correctamente');
+            showNotifySuccess(
+              'Producto eliminado',
+              'El producto se eliminó correctamente'
+            );
             this.consultaInfo();
           },
           (e) => {
@@ -99,4 +108,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  getTalla(talla: string): string {
+    return talla ? talla.toUpperCase() : '--';
+  }
 }
