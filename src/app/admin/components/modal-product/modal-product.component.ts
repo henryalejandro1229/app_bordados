@@ -46,6 +46,7 @@ export class ModalProductComponent implements OnInit {
       marca: new FormControl('', [Validators.required]),
       precio: new FormControl('', [Validators.required]),
       categoryID: new FormControl('', [Validators.required]),
+      talla: new FormControl('', [Validators.required]),
     });
   }
 
@@ -64,6 +65,7 @@ export class ModalProductComponent implements OnInit {
         this.data.objProduct.categoryID
       );
       this.form.controls['marca'].setValue(this.data.objProduct.marca);
+      this.form.controls['talla'].setValue(this.data.objProduct.talla);
       this.form.controls['precio'].setValue(this.data.objProduct.precio);
       this.imageName = this.data.objProduct.imageUrl;
     }
