@@ -17,12 +17,14 @@
                 <mat-label>Correo electrónico</mat-label>
                 <input matInput formControlName="email" placeholder="Ingrese su correo electrónico" type="email"
                   required />
+                <mat-error *ngIf="form.controls['email'].errors?.['required']">Correo electrónico requerido</mat-error>
+                <mat-error *ngIf="form.controls['email'].errors?.['email']">Correo electrónico no válido</mat-error>
               </mat-form-field>
             </div>
           </section>
         </form>
         <section class="action">
-          <button (click)="validateEmail()" class="k-btn-primary k-btn-pry-pink" mat-flat-button>
+          <button (click)="validateEmail()" class="k-btn-primary k-btn-pry-pink" mat-flat-button [disabled]="form.invalid">
             Restablecer
           </button>
         </section>

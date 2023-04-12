@@ -23,6 +23,7 @@
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Nombre del producto</mat-label>
                     <input matInput type="text" placeholder="Nombre del producto" formControlName="title" />
+                    <mat-error *ngIf="form.controls['title'].errors?.['required']">Nombre requerido</mat-error>
                 </mat-form-field>
                 <div class="col-xs-12 mb-4" color="primary" appearance="outline">
                     <label for="formFile" class="form-label">Imagen del producto</label>
@@ -35,10 +36,13 @@
                     <mat-label>Descripción</mat-label>
                     <input matInput type="text" placeholder="Descripción del producto"
                         formControlName="description" />
+                        <mat-error *ngIf="form.controls['description'].errors?.['required']">Descripción requerida</mat-error>
                 </mat-form-field>
                 <mat-form-field class="col-md-6" color="primary" appearance="outline">
                     <mat-label>Precio</mat-label>
-                    <input matInput type="number" placeholder="Precio del producto" formControlName="precio" />
+                    <input matInput min="0" type="number" placeholder="Precio del producto" formControlName="precio" />
+                    <mat-error *ngIf="form.controls['precio'].errors?.['required']">Precio requerido</mat-error>
+                    <mat-error *ngIf="form.controls['precio'].errors?.['min']">El precio no debe ser negativo</mat-error>
                 </mat-form-field>
                 <mat-form-field class="col-md-6" color="primary" appearance="outline">
                     <mat-label>Talla</mat-label>
@@ -56,6 +60,7 @@
                         <mat-option value="woman">Dama</mat-option>
                         <mat-option value="man">Caballero</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="form.controls['ctegorySex'].errors?.['required']">Campo requerido</mat-error>
                 </mat-form-field>
                 <mat-form-field class="col-md-12" color="primary" appearance="outline">
                     <mat-label>Categoría</mat-label>
@@ -63,10 +68,12 @@
                         <mat-option *ngFor="let cat of objCategories" [value]="cat._id.$oid">{{cat.name}} -
                             {{getTypeSex(cat.categorySex)}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="form.controls['categoryID'].errors?.['required']">Categoría requerida</mat-error>
                 </mat-form-field>
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Marca</mat-label>
                     <input matInput type="text" placeholder="Marca" formControlName="marca" />
+                    <mat-error *ngIf="form.controls['marca'].errors?.['required']">Marca requerida</mat-error>
                 </mat-form-field>
             </div>
         </form>

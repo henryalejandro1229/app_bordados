@@ -22,7 +22,8 @@
             <div class="row">
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Nombre</mat-label>
-                    <input matInput type="text" placeholder="Nombre de la categoría" formControlName="name"/>
+                    <input matInput type="text" placeholder="Nombre de la categoría" formControlName="name" />
+                    <mat-error *ngIf="form.controls['name'].errors?.['required']">Nombre requerido</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-xs-12 mb-4" color="primary" appearance="outline">
@@ -35,7 +36,10 @@
             <div class="row">
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Descripción</mat-label>
-                    <input matInput type="text" placeholder="Descripción de la categoría" formControlName="description"/>
+                    <input matInput type="text" placeholder="Descripción de la categoría"
+                        formControlName="description" />
+                    <mat-error *ngIf="form.controls['description'].errors?.['required']">Descripción
+                        requerida</mat-error>
                 </mat-form-field>
             </div>
             <div class="row">
@@ -44,15 +48,16 @@
                     <mat-select formControlName="categorySex">
                         <mat-option value="woman">Dama</mat-option>
                         <mat-option value="man">Caballero</mat-option>
-                      </mat-select>
+                    </mat-select>
+                    <mat-error *ngIf="form.controls['categorySex'].errors?.['required']">Campo requerido</mat-error>
                 </mat-form-field>
             </div>
         </form>
     </section>
 
     <section class="footer">
-        <button [disabled]="form.invalid"
-              mat-raised-button class="k-btn-pry-pink" (click)="submit()">{{data.isNew ? 'Crear': 'Actualizar'}} categoría</button>
+        <button [disabled]="form.invalid" mat-raised-button class="k-btn-pry-pink" (click)="submit()">{{data.isNew ?
+            'Crear': 'Actualizar'}} categoría</button>
     </section>
 
 </main>
