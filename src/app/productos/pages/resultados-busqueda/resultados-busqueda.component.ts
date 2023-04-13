@@ -72,6 +72,8 @@ export class ResultadosBusquedaComponent implements OnInit {
     this.min = res['min'];
     this.max = res['max'];
     this.categorySelectID = res['categoryID'];
+    this.sexSelect = res['categorySex'];
+    this.tallaSelect = res['talla'];
     this.buscar();
   }
 
@@ -85,44 +87,59 @@ export class ResultadosBusquedaComponent implements OnInit {
 
   buscar(): void {
     this.loading = true;
-    this._ps.findProduct(this.txtSearch, this.min, this.max, this.categorySelectID, this.sexSelect, this.tallaSelect).subscribe(
-      (res: ProductoModelo[]) => {
-        this.objProductos = res;
-        this.loading = false;
-      },
-      (e) => {
-        showNotifyError('Error al buscar', 'Intente mas tarde');
-        this.loading = false;
-      }
-    );
+    this._ps
+      .findProduct(
+        this.txtSearch,
+        this.min,
+        this.max,
+        this.categorySelectID,
+        this.sexSelect,
+        this.tallaSelect
+      )
+      .subscribe(
+        (res: ProductoModelo[]) => {
+          this.objProductos = res;
+          this.loading = false;
+        },
+        (e) => {
+          showNotifyError('Error al buscar', 'Intente mas tarde');
+          this.loading = false;
+        }
+      );
   }
 
   getCategory(id: string): string {
     if (this.objCategories && this.objCategories.length > 0) {
-      let category = this.objCategories.find((category) => category._id.$oid === id);
+      let category = this.objCategories.find(
+        (category) => category._id.$oid === id
+      );
       return category ? category.name : '';
     }
     return '';
   }
 
-  aplicarFiltroPrecio() {
+  aplicaFiltros(campo?: string) {
+    if (campo) {
+      switch (campo) {
+        case 'sexSelect':
+          this.sexSelect = '0';
+          break;
+        case 'categorySelectID':
+          this.categorySelectID = '0';
+          break;
+        case 'tallaSelect':
+          this.tallaSelect = '0';
+          break;
+      }
+    }
     this.router.navigate([], {
       queryParams: {
         search: this.txtSearch,
         min: this.min,
         max: this.max,
         categoryID: this.categorySelectID,
-      },
-    });
-  }
-
-  filterCategory() {
-    this.router.navigate([], {
-      queryParams: {
-        search: this.txtSearch,
-        min: this.min,
-        max: this.max,
-        categoryID: this.categorySelectID,
+        categorySex: this.sexSelect,
+        talla: this.tallaSelect,
       },
     });
   }

@@ -7,7 +7,7 @@
     <mat-divider></mat-divider>
     <div class="py-4" *ngIf="objProductos || !loading">
         <div class="row">
-            <div class="col-md-3 g-4 pb-4 py-4 rounded">
+            <div class="col-md-3 pb-4 pt-4">
                 <h5 class="fw-light"><b>Filtrar por precio</b></h5>
                 <div class="row">
                     <div class="col-12">
@@ -20,7 +20,7 @@
                                 <mat-label>Máximo</mat-label>
                                 <input matInput [(ngModel)]="max" min="0" type="number" (change)="validaFiltroPrecio()">
                             </mat-form-field>
-                            <button class="col-2 bg-light" matTooltip="Aplicar" (click)="aplicarFiltroPrecio()"
+                            <button class="col-2 bg-light" matTooltip="Aplicar" (click)="aplicaFiltros()"
                                 mat-icon-button [disabled]="priceError">
                                 <mat-icon color="accent">search</mat-icon>
                             </button>
@@ -31,11 +31,56 @@
                     </div>
                 </div>
 
-                <h5 class="fw-light pt-3"><b>Filtrar por categoría</b></h5>
-                <mat-radio-group [(ngModel)]="categorySelectID" (change)="filterCategory()">
-                    <mat-radio-button class="d-block p-2" [value]="'0'">
-                        Ninguno
+                <mat-divider class="my-3"></mat-divider>
+
+                <h5 class="fw-light"><b>Filtrar por sexo</b></h5>
+                <mat-button-toggle-group [(ngModel)]="sexSelect" (change)="aplicaFiltros()">
+                    <mat-button-toggle value="man">Caballero</mat-button-toggle>
+                    <mat-button-toggle value="woman">Dama</mat-button-toggle>
+                </mat-button-toggle-group>
+                <button class="col-2 bg-light mx-2" matTooltip="Limpiar" color="accent" (click)="aplicaFiltros('sexSelect')"
+                    mat-icon-button *ngIf="sexSelect && sexSelect !== '0'">
+                    <mat-icon>close</mat-icon>
+                </button>
+
+                <mat-divider class="my-3"></mat-divider>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="fw-light"><b>Filtrar por talla</b></h5>
+                    <button class="col-2 bg-light mx-2" matTooltip="Limpiar" color="accent" (click)="aplicaFiltros('tallaSelect')"
+                        mat-icon-button *ngIf="tallaSelect && tallaSelect !== '0'">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+                <mat-radio-group [(ngModel)]="tallaSelect" (change)="aplicaFiltros()">
+                    <mat-radio-button class="d-block p-2" value="xl">
+                        Extra grande
                     </mat-radio-button>
+                    <mat-radio-button class="d-block p-2" value="l">
+                        Grande
+                    </mat-radio-button>
+                    <mat-radio-button class="d-block p-2" value="m">
+                        Mediana
+                    </mat-radio-button>
+                    <mat-radio-button class="d-block p-2" value="s">
+                        Chica
+                    </mat-radio-button>
+                    <mat-radio-button class="d-block p-2" value="xs">
+                        Extra chica
+                    </mat-radio-button>
+                </mat-radio-group>
+
+                <mat-divider class="my-3"></mat-divider>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="fw-light"><b>Filtrar por categoría</b></h5>
+                    <button class="col-2 bg-light mx-2" matTooltip="Limpiar" color="accent"
+                        (click)="aplicaFiltros('categorySelectID')" mat-icon-button
+                        *ngIf="categorySelectID && categorySelectID !== '0'">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+                <mat-radio-group [(ngModel)]="categorySelectID" (change)="aplicaFiltros()">
                     <mat-radio-button class="d-block p-2" *ngFor="let cat of objCategories" [value]="cat._id.$oid">
                         {{cat.name}}
                     </mat-radio-button>
@@ -54,14 +99,15 @@
                                 <div class="col-md-8 p-4 bg-light">
                                     <div class="d-flex justify-content-between">
                                         <h5 class="text-truncate">
-                                        <b>{{prod.title}}</b>
-                                    </h5>
-                                    <h6 class="fw-light">{{prod.categorySex === 'man' ? 'Caballero' : 'Dama'}}</h6></div>
+                                            <b>{{prod.title}}</b>
+                                        </h5>
+                                        <h6 class="fw-light">{{prod.categorySex === 'man' ? 'Caballero' : 'Dama'}}</h6>
+                                    </div>
                                     <p class="h6 fw-light text-truncate" [matTooltip]="prod.description">
                                         {{prod.description}}
                                     </p>
                                     <p class="h7 fw-light">
-                                        <small>Talla: 
+                                        <small>Talla:
                                             <!-- <b>{{prod.talla | uppercase}}</b> -->
                                             <container-element [ngSwitch]="prod.talla">
                                                 <b *ngSwitchCase="'xl'">Extra grande</b>
@@ -69,10 +115,12 @@
                                                 <b *ngSwitchCase="'m'">Mediana</b>
                                                 <b *ngSwitchCase="'s'">Chica</b>
                                                 <b *ngSwitchCase="'xs'">Extra chica</b>
-                                             </container-element>
+                                            </container-element>
                                         </small>
                                     </p>
-                                    <p class="h6 fw-light text-truncate">Categoría: <b>{{getCategory(prod.categoryID)}}</b></p>
+                                    <p class="h6 text-truncate"><span class="fw-light">Categoría: </span>
+                                        <b>{{getCategory(prod.categoryID)}}</b>
+                                    </p>
                                     <h2>
                                         <b class="text-muted txt-pink">
                                             <small>$</small>
