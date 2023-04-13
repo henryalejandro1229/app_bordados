@@ -6,6 +6,7 @@ import { DetailProductComponent } from './pages/detail-product/detail-product.co
 import { SharedModule } from '../shared/shared.module';
 import { ProductosRoutingModule } from './productos-routing.module';
 import { ListCategoriesComponent } from './pages/list-categories/list-categories.component';
+import { ResultadosBusquedaComponent } from './pages/resultados-busqueda/resultados-busqueda.component';
 
 
 
@@ -15,6 +16,7 @@ import { ListCategoriesComponent } from './pages/list-categories/list-categories
     ListProductsComponent,
     DetailProductComponent,
     ListCategoriesComponent,
+    ResultadosBusquedaComponent,
   ],
   imports: [
     CommonModule,

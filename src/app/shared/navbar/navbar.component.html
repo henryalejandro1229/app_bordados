@@ -102,10 +102,10 @@
       </ul>
       <div class="d-flex mx-4">
         <form class="d-flex input-group w-auto mx-2">
-          <input type="search" class="form-control form-control-sm rounded" placeholder="Search" aria-label="Search"
+          <input type="search" (keyup.enter)="search(inputSearch.value)" #inputSearch class="form-control form-control-sm rounded" placeholder="Search" aria-label="Search"
             aria-describedby="search-addon" />
         </form>
-        <button mat-mini-fab color="primary" matTooltip="Buscar">
+        <button mat-mini-fab color="primary" (click)="search(inputSearch.value)" matTooltip="Buscar">
           <mat-icon>search</mat-icon>
         </button>
       </div>

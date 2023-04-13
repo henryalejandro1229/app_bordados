@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { CategoryModelo, ImagenModelo, ProductoModelo } from '../models/productos.modelo';
+import {
+  CategoryModelo,
+  ImagenModelo,
+  ProductoModelo,
+} from '../models/productos.modelo';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +35,11 @@ export class ProductosService {
     });
   }
 
-  updateCategory(id: string, formData: CategoryModelo, imageUrl: string): Observable<any> {
+  updateCategory(
+    id: string,
+    formData: CategoryModelo,
+    imageUrl: string
+  ): Observable<any> {
     let params = new HttpParams()
       .append('id', id)
       .append('name', formData.name)
@@ -55,20 +63,24 @@ export class ProductosService {
 
   createProduct(formData: ProductoModelo, imageUrl: string): Observable<any> {
     let params = new HttpParams()
-    .append('title', formData.title)
-    .append('description', formData.description)
-    .append('categoryID', formData.categoryID)
-    .append('categorySex', formData.categorySex)
-    .append('precio', formData.precio)
-    .append('talla', formData.talla)
-    .append('imageUrl', imageUrl)
-    .append('marca', formData.marca);
+      .append('title', formData.title)
+      .append('description', formData.description)
+      .append('categoryID', formData.categoryID)
+      .append('categorySex', formData.categorySex)
+      .append('precio', formData.precio)
+      .append('talla', formData.talla)
+      .append('imageUrl', imageUrl)
+      .append('marca', formData.marca);
     return this.http.get(`${environment.url}/products/createProduct.php`, {
       params,
     });
   }
 
-  updateProduct(id: string, formData: ProductoModelo, imageUrl: string): Observable<any> {
+  updateProduct(
+    id: string,
+    formData: ProductoModelo,
+    imageUrl: string
+  ): Observable<any> {
     let params = new HttpParams()
       .append('id', id)
       .append('title', formData.title)
@@ -83,7 +95,7 @@ export class ProductosService {
       params,
     });
   }
-  
+
   deleteProduct(id: string): Observable<any> {
     return this.http.get(
       `${environment.url}/products/deleteProduct.php?id=${id}`
@@ -103,6 +115,29 @@ export class ProductosService {
   }
 
   uploadFile(archivo: ImagenModelo) {
-    return this.http.post(`${environment.url}/products/uploadImage.php`, archivo);
+    return this.http.post(
+      `${environment.url}/products/uploadImage.php`,
+      archivo
+    );
+  }
+
+  findProduct(
+    txtSearch: string,
+    min: number,
+    max: number,
+    category: string,
+    sex: string,
+    talla: string
+  ): Observable<any> {
+    let params = new HttpParams()
+      .append('txtSearch', txtSearch.toLowerCase())
+      .append('categoryID', category ? category : '0')
+      .append('categorySex', sex ? sex : '0')
+      .append('talla', talla ? talla : '0')
+      .append('min', min ? min : -1)
+      .append('max', max ? max : -1);
+    return this.http.get(`${environment.url}/products/findProduct.php`, {
+      params,
+    });
   }
 }

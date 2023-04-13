@@ -1,0 +1,100 @@
+<!-- <img src="./../../../../assets/resources/sld1.png" class="img-fluid" alt="Responsive image"> -->
+<div class="container">
+    <div class="py-4">
+        <p class="h3">{{txtSearch}}</p>
+        <p class="h5 fw-light">{{objProductos ? objProductos.length : '0'}} resultados</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="py-4" *ngIf="objProductos || !loading">
+        <div class="row">
+            <div class="col-md-3 g-4 pb-4 py-4 rounded">
+                <h5 class="fw-light"><b>Filtrar por precio</b></h5>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <mat-form-field class="col-5" color="accent">
+                                <mat-label>Mínimo</mat-label>
+                                <input matInput [(ngModel)]="min" min="0" type="number" (change)="validaFiltroPrecio()">
+                            </mat-form-field>
+                            <mat-form-field class="col-5" color="accent">
+                                <mat-label>Máximo</mat-label>
+                                <input matInput [(ngModel)]="max" min="0" type="number" (change)="validaFiltroPrecio()">
+                            </mat-form-field>
+                            <button class="col-2 bg-light" matTooltip="Aplicar" (click)="aplicarFiltroPrecio()"
+                                mat-icon-button [disabled]="priceError">
+                                <mat-icon color="accent">search</mat-icon>
+                            </button>
+                        </div>
+                        <div class="alert alert-danger col-md-12" role="alert" *ngIf="priceError">
+                            El precio máximo debe ser mayor al mínimo.
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="fw-light pt-3"><b>Filtrar por categoría</b></h5>
+                <mat-radio-group [(ngModel)]="categorySelectID" (change)="filterCategory()">
+                    <mat-radio-button class="d-block p-2" [value]="'0'">
+                        Ninguno
+                    </mat-radio-button>
+                    <mat-radio-button class="d-block p-2" *ngFor="let cat of objCategories" [value]="cat._id.$oid">
+                        {{cat.name}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="row g-4 col-md-9">
+                <div class="col-md-12" *ngFor="let prod of objProductos">
+                    <div class="card hover-shadow shadow">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="container-image">
+                                        <img src="{{urlImage}}/{{prod.imageUrl}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 p-4 bg-light">
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="text-truncate">
+                                        <b>{{prod.title}}</b>
+                                    </h5>
+                                    <h6 class="fw-light">{{prod.categorySex === 'man' ? 'Caballero' : 'Dama'}}</h6></div>
+                                    <p class="h6 fw-light text-truncate" [matTooltip]="prod.description">
+                                        {{prod.description}}
+                                    </p>
+                                    <p class="h7 fw-light">
+                                        <small>Talla: 
+                                            <!-- <b>{{prod.talla | uppercase}}</b> -->
+                                            <container-element [ngSwitch]="prod.talla">
+                                                <b *ngSwitchCase="'xl'">Extra grande</b>
+                                                <b *ngSwitchCase="'l'">Grande</b>
+                                                <b *ngSwitchCase="'m'">Mediana</b>
+                                                <b *ngSwitchCase="'s'">Chica</b>
+                                                <b *ngSwitchCase="'xs'">Extra chica</b>
+                                             </container-element>
+                                        </small>
+                                    </p>
+                                    <p class="h6 fw-light text-truncate">Categoría: <b>{{getCategory(prod.categoryID)}}</b></p>
+                                    <h2>
+                                        <b class="text-muted txt-pink">
+                                            <small>$</small>
+                                            {{prod.precio}}<small>.00</small>
+                                        </b>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="loading" class="d-flex justify-content-center py-5">
+        <div class="spinner-border" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+
+    <div class="py-4" *ngIf="!objProductos || objProductos.length === 0">
+        <p class="h3">No se encontraron resultados de "{{txtSearch}}"</p>
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { MisionVisionComponent } from '../shared/mision-vision/mision-vision.com
 import { AvisoPrivacidadComponent } from '../shared/aviso-privacidad/aviso-privacidad.component';
 import { PedidosComponent } from '../shared/pedidos/pedidos.component';
 import { PreguntasFrecuentesComponent } from '../shared/preguntas-frecuentes/preguntas-frecuentes.component';
+import { ResultadosBusquedaComponent } from '../productos/pages/resultados-busqueda/resultados-busqueda.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,11 @@ const routes: Routes = [
         path: 'pedidos',
         data: { breadcrumb: 'Mis pedidos' },
         component: PedidosComponent,
+      },
+      {
+        path: 'resultados-busqueda',
+        data: { breadcrumb: 'Resultados de búsqueda' },
+        component: ResultadosBusquedaComponent,
       },
       {
         path: 'list-categories',

@@ -20,11 +20,11 @@ const routes: Routes = [
         component: ListProductsComponent,
       },
     ],
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ProductosRoutingModule { }
+export class ProductosRoutingModule {}

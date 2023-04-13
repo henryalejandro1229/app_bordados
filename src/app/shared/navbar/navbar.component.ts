@@ -5,6 +5,7 @@ import {
   showModalConfirmation,
   showNotifyError,
   showNotifySuccess,
+  showNotifyWarning,
 } from '../functions/Utilities';
 import { CategoryModelo } from 'src/app/productos/models/productos.modelo';
 import { ProductosService } from 'src/app/productos/services/productos.service';
@@ -72,5 +73,15 @@ export class NavbarComponent implements OnInit {
 
   verCategoria(category: CategoryModelo) {
     this.router.navigate(['/home/list-categories/category', category._id.$oid]);
+  }
+
+  search(txtSearch: string) {
+    if (!txtSearch || txtSearch.length === 0) {
+      showNotifyWarning('Ingrese un texto de busqueda', '');
+      return;
+    }
+    this.router.navigate(['/home/resultados-busqueda'], {
+      queryParams: { search: txtSearch },
+    });
   }
 }
