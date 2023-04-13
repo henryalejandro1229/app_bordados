@@ -29,7 +29,7 @@ export class ResetPasswordComponent implements OnInit {
     private readonly _router: Router
   ) {
     this.form = new FormGroup({
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z\d$@$!%*?&].{7,}')]),
       password2: new FormControl('', [Validators.required]),
     });
     this.activatedRouter.queryParams.subscribe((param) => {
