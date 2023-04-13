@@ -30,7 +30,7 @@
                     <div *ngIf="!data.isNew" class="col-xs-12 border d-flex justify-content-center mb-3">
                         <img src="{{urlImage}}/{{imageName}}" class="img-fluid" alt="Imagen del producto">
                     </div>
-                    <input class="form-control" type="file" accept="image/*" (change)="seleccionarImagen($event)">
+                    <input class="form-control" #inputFile type="file" accept="image/*" (change)="seleccionarImagen($event)">
                 </div>
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Descripción</mat-label>
@@ -60,7 +60,7 @@
                         <mat-option value="woman">Dama</mat-option>
                         <mat-option value="man">Caballero</mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls['ctegorySex'].errors?.['required']">Campo requerido</mat-error>
+                    <mat-error *ngIf="form.controls['categorySex'].errors?.['required']">Campo requerido</mat-error>
                 </mat-form-field>
                 <mat-form-field class="col-md-12" color="primary" appearance="outline">
                     <mat-label>Categoría</mat-label>

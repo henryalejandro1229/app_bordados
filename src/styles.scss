@@ -155,7 +155,7 @@ tr.example-element-row:not(.example-expanded-row):active {
   display: none;
 }
 .breadcrumb-app:before {
-  content: ">";
+  content: "/";
   margin: 0 10px 0 8px;
 }
 .breadcrumb-item {
