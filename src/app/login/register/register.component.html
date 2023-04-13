@@ -1,8 +1,7 @@
-<app-navbar></app-navbar>
 <main class="login-page bg-light">
   <section class="login-body">
     <section class="login-logo">
-      <a href="#/home" style="cursor: pointer"><img src="../../../assets/resources/image-logo.jpeg" alt="" /></a>
+      <a [routerLink]="['/home']" style="cursor: pointer"><img src="../../../assets/resources/image-logo.jpeg" alt="" /></a>
     </section>
     <section class="login-container shadow-lg">
       <section class="card b-nn">
@@ -29,10 +28,9 @@
           </button>
         </section>
         <div class="forgot-psw text-center">
-          <a href="#/login">Iniciar sesión</a>
+          <a [routerLink]="['/home/login']">Iniciar sesión</a>
         </div>
       </section>
     </section>
   </section>
-  <app-footer></app-footer>
 </main>

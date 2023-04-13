@@ -11,10 +11,12 @@ const routes: Routes = [
     children: [
       {
         path: ':type',
+        data: { breadcrumb: 'Categorías' },
         component: ListCategoriesComponent,
       },
       {
         path: 'category/:id',
+        data: { breadcrumb: 'Categoría' },
         component: ListProductsComponent,
       },
     ],

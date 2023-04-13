@@ -32,7 +32,7 @@ export class ListCategoriesComponent implements OnInit {
       this._router.navigate(['/home/list-categories']);
       return;
     }
-    this._router.navigate(['/login']);
+    this._router.navigate(['home/login']);
   }
 
   consultaInfo(categorySex: string): void {

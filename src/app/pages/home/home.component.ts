@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       this._router.navigate(['/home/list-categories', categorySex]);
       return;
     }
-    this._router.navigate(['/login']);
+    this._router.navigate(['/home/login']);
   }
 
   getCategories() {

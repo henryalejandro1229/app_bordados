@@ -1,8 +1,7 @@
-<app-navbar></app-navbar>
 <main class="login-page bg-light">
   <section class="login-body">
     <section class="login-logo">
-      <a href="#/home" style="cursor: pointer"><img src="../../../assets/resources/image-logo.jpeg"/></a>
+      <a [routerLink]="['/home']" style="cursor: pointer"><img src="../../../assets/resources/image-logo.jpeg"/></a>
     </section>
     <section class="login-container shadow-lg">
       <form [formGroup]="form" (ngSubmit)="login()">
@@ -29,7 +28,7 @@
                 </mat-icon>
               </mat-form-field>
               <div class="forgot-psw text-center">
-                <a href="#/forgot-pwd">¿Olvidaste tu contraseña?</a>
+                <a [routerLink]="['/home/forgot-pwd']">¿Olvidaste tu contraseña?</a>
               </div>
             </div>
           </section>
@@ -40,11 +39,10 @@
           </section>
           <div class="forgot-psw text-center">
             <span class="text-dark">¿No tienes una cuenta? </span>
-            <a href="#/singup">Registrate</a>
+            <a [routerLink]="['/home/singup']">Registrate</a>
           </div>
         </section>
       </form>
     </section>
   </section>
-  <app-footer></app-footer>
 </main>

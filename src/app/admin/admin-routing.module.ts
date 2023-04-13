@@ -13,18 +13,22 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        data: { breadcrumb: 'Dashboard' },
         component: HomeAdminComponent
       },
       {
         path: 'products',
+        data: { breadcrumb: 'Productos' },
         component: ProductsComponent
       },
       {
         path: 'categories',
+        data: { breadcrumb: 'Categorías' },
         component: CategoriesComponent
       },
       {
         path: 'users',
+        data: { breadcrumb: 'Usuarios' },
         component: UsersComponent
       },
     ]

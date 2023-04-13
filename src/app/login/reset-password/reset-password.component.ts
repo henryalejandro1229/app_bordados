@@ -70,7 +70,7 @@ export class ResetPasswordComponent implements OnInit {
         .subscribe(
           (res) => {
             showNotifySuccess('Contraseña actualizada', '¡Su contraseña se actualizó correctamente!');
-            this._router.navigate(['/login']);
+            this._router.navigate(['/home/login']);
           },
           (e) => {
             showNotifyError('Error al restablecer contraseña', 'Intente mas tarde');
