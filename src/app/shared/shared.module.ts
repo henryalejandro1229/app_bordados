@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalCerrarSesionComponent } from './modal-cerrar-sesion/modal-cerrar-sesion.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { PageNoFoundComponent } from './page-no-found/page-no-found.component';
+import { BreadcrumbModule } from 'angular-crumbs';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PageNoFoundComponent } from './page-no-found/page-no-found.component';
     CommonModule,
     MaterialModule,
     HttpClientModule,
+    BreadcrumbModule
   ],
   exports: [
     NavbarComponent,
@@ -45,6 +47,7 @@ import { PageNoFoundComponent } from './page-no-found/page-no-found.component';
     ReactiveFormsModule,
     FormsModule,
     PedidosComponent,
+    BreadcrumbModule
   ],
 })
 export class SharedModule {}

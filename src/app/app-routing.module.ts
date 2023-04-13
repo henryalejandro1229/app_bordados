@@ -12,22 +12,60 @@ import { PedidosComponent } from './shared/pedidos/pedidos.component';
 import { PageNoFoundComponent } from './shared/page-no-found/page-no-found.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'singup', component: RegisterComponent },
-  { path: 'forgot-pwd', component: ForgotPwdComponent },
-  { path: 'singup-process', component: RegisterProcessComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'mision-vision', component: MisionVisionComponent },
-  { path: 'aviso-privacidad', component: AvisoPrivacidadComponent },
-  { path: 'preguntas-frecuentes', component: PreguntasFrecuentesComponent },
-  { path: 'pedidos', component: PedidosComponent },
+  {
+    path: 'login',
+    data: { breadcrumb: 'Inicio de sesión' },
+    component: LoginComponent,
+  },
+  {
+    path: 'singup',
+    data: { breadcrumb: 'Registro' },
+    component: RegisterComponent,
+  },
+  {
+    path: 'forgot-pwd',
+    data: { breadcrumb: 'Recuperar contraseña' },
+    component: ForgotPwdComponent,
+  },
+  {
+    path: 'singup-process',
+    data: { breadcrumb: 'Completar registro' },
+    component: RegisterProcessComponent,
+  },
+  {
+    path: 'reset-password',
+    data: { breadcrumb: 'Actualizar contraseña' },
+    component: ResetPasswordComponent,
+  },
+  {
+    path: 'mision-vision',
+    data: { breadcrumb: 'Misión y visión' },
+    component: MisionVisionComponent,
+  },
+  {
+    path: 'aviso-privacidad',
+    data: { breadcrumb: 'Aviso de privacidad' },
+    component: AvisoPrivacidadComponent,
+  },
+  {
+    path: 'preguntas-frecuentes',
+    data: { breadcrumb: 'Preguntas frecuentes' },
+    component: PreguntasFrecuentesComponent,
+  },
+  {
+    path: 'pedidos',
+    data: { breadcrumb: 'Mis pedidos' },
+    component: PedidosComponent,
+  },
   {
     path: 'home',
+    data: { breadcrumb: 'Inicio' },
     loadChildren: () =>
       import('./pages/pages.module').then((mod) => mod.PagesModule),
   },
   {
     path: 'admin',
+    data: { breadcrumb: 'Dashboard' },
     loadChildren: () =>
       import('./admin/admin.module').then((mod) => mod.AdminModule),
   },

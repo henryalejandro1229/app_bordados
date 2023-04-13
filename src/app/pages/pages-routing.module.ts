@@ -14,6 +14,7 @@ const routes: Routes = [
       },
       {
         path: 'admin',
+        data: { breadcrumb: 'Verificar correo'},
         loadChildren: () => import('../admin/admin.module').then(mod => mod.AdminModule),
       },
       {

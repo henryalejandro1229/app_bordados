@@ -8,6 +8,7 @@ import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PagesModule } from './pages/pages.module';
 import { ProductosModule } from './productos/productos.module';
+import { BreadcrumbModule } from 'angular-crumbs';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductosModule } from './productos/productos.module';
     LoginModule,
     PagesModule,
     ProductosModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BreadcrumbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
