@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Optional } from '@angular/core';
+import { Component, OnInit, Inject, Optional, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {
@@ -9,6 +9,7 @@ import { ProductosService } from 'src/app/productos/services/productos.service';
 import {
   showNotifyError,
   showNotifySuccess,
+  showSwalWarning,
 } from 'src/app/shared/functions/Utilities';
 import { environment } from 'src/environments/environment';
 
@@ -26,6 +27,8 @@ export class ModalCategoryComponent implements OnInit {
     nombreArchivo: '',
     base64textString: '',
   };
+  extPermitidas = ['jpg', 'jpeg', 'png'];
+  @ViewChild('inputFile') inputFile!: ElementRef;
 
   constructor(
     private matRef: MatDialogRef<ModalCategoryComponent>,
@@ -103,10 +106,19 @@ export class ModalCategoryComponent implements OnInit {
       );
   }
 
+  getFileExtension(filename: string) {
+    return filename.split('.').pop();
+  }
+
   seleccionarImagen(event: any) {
     const files = event.target.files;
     const file = files[0];
-    console.log(file);
+    const ext = this.getFileExtension(file.name);
+    if (ext && !(this.extPermitidas.includes(ext))) {
+      showSwalWarning('Formato de archivo no valido', 'Solo se admiten archivos .jpg, .jpeg, .png');
+      this.inputFile.nativeElement.value = "";
+      return;
+    }
 
     this.objImagen.nombreArchivo = file.name;
 
