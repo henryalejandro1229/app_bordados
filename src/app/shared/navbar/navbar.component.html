@@ -41,6 +41,7 @@
         <button class="nav-link" mat-menu-item (click)="routerLink('/admin/categories')">CATEGORIAS</button>
         <button class="nav-link" mat-menu-item (click)="routerLink('/admin/products')">PRODUCTOS</button>
         <button class="nav-link" mat-menu-item (click)="routerLink('/admin/users')">USUARIOS</button>
+        <button class="nav-link" mat-menu-item (click)="routerLink('/admin/mantenimiento')">SEGURIDAD</button>
       </div>
     </mat-menu>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -99,8 +100,11 @@
         <li class="nav-item mx-2">
           <button class="nav-link" mat-button (click)="routerLink('/admin/users')">USUARIOS</button>
         </li>
+        <li class="nav-item mx-2">
+          <button class="nav-link" mat-button (click)="routerLink('/admin/mantenimiento')">SEGURIDAD</button>
+        </li>
       </ul>
-      <div class="d-flex mx-4">
+      <div class="d-flex mx-4" *ngIf="isAuth && !isAdmin || !isAuth">
         <form class="d-flex input-group w-auto mx-2">
           <input type="search" (keyup.enter)="search(inputSearch.value)" #inputSearch class="form-control input-search form-control-sm rounded" placeholder="Buscar" aria-label="Search"
             aria-describedby="search-addon" />

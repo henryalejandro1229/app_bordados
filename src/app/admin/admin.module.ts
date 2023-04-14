@@ -10,6 +10,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { ModalCategoryComponent } from './components/modal-category/modal-category.component';
 import { ModalProductComponent } from './components/modal-product/modal-product.component';
 import { ModalUserComponent } from './components/modal-user/modal-user.component';
+import { MantenimientoBdComponent } from './pages/mantenimiento-bd/mantenimiento-bd.component';
 
 
 
@@ -22,7 +23,8 @@ import { ModalUserComponent } from './components/modal-user/modal-user.component
     CategoriesComponent,
     ModalCategoryComponent,
     ModalProductComponent,
-    ModalUserComponent
+    ModalUserComponent,
+    MantenimientoBdComponent
   ],
   imports: [
     CommonModule,

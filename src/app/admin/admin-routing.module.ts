@@ -5,6 +5,7 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { UsersComponent } from './pages/users/users.component';
+import { MantenimientoBdComponent } from './pages/mantenimiento-bd/mantenimiento-bd.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
         path: 'users',
         data: { breadcrumb: 'Usuarios' },
         component: UsersComponent
+      },
+      {
+        path: 'mantenimiento',
+        data: { breadcrumb: 'Mantenimiento de base de datos' },
+        component: MantenimientoBdComponent
       },
     ]
   }

@@ -90,4 +90,34 @@ export class LoginService {
     const url = `${environment.urlEmail}/send-forgot-password`;
     return this.http.post(url, body);
   }
+
+  createBackup(): Observable<any> {
+    const url = `${environment.url}/config/createBackup.php`;
+    return this.http.get(url);
+  }
+
+  restoreDB(): Observable<any> {
+    const url = `${environment.url}/config/restoreDB.php`;
+    return this.http.get(url);
+  }
+
+  setDateDumps(): Observable<any> {
+    const url = `${environment.url}/mongotools/setDateDump.php?date=${new Date()}`;
+    return this.http.get(url);
+  }
+
+  setDateRestore(): Observable<any> {
+    const url = `${environment.url}/mongotools/setDateRestore.php?date=${new Date()}`;
+    return this.http.get(url);
+  }
+
+  getDumps(): Observable<any> {
+    const url = `${environment.url}/mongotools/getDumps.php?`;
+    return this.http.get(url);
+  }
+
+  getRestores(): Observable<any> {
+    const url = `${environment.url}/mongotools/getRestores.php?`;
+    return this.http.get(url);
+  }
 }
