@@ -47,7 +47,7 @@ export class ModalProductComponent implements OnInit {
       description: new FormControl('', [Validators.required]),
       categorySex: new FormControl('', [Validators.required]),
       marca: new FormControl('', [Validators.required]),
-      precio: new FormControl('', [Validators.required, Validators.min(0)]),
+      precio: new FormControl('', [Validators.required, Validators.min(1)]),
       categoryID: new FormControl('', [Validators.required]),
       talla: new FormControl('', [Validators.required]),
     });

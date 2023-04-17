@@ -16,7 +16,6 @@ export class UsersComponent implements OnInit {
     'position',
     'name',
     'email',
-    'password',
     'isAdmin',
     'options',
   ];
