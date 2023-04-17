@@ -24,7 +24,6 @@ export class ProductsComponent implements OnInit {
     'description',
     'categoria',
     'categorySex',
-    'marca',
     'talla',
     'precio',
     'options',

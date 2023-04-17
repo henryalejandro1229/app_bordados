@@ -29,15 +29,6 @@ export class ResultadosBusquedaComponent implements OnInit {
   tallaSelect!: string;
   priceError = false;
 
-  displayedColumns: string[] = [
-    'position',
-    'name',
-    'description',
-    'categoria',
-    'marca',
-    'precio',
-  ];
-
   constructor(
     private _ps: ProductosService,
     private activatedRoute: ActivatedRoute,

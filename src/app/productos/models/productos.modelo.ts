@@ -13,7 +13,6 @@ export interface ProductoModelo {
   description: string;
   categorySex: string;
   imageUrl: string;
-  marca: string;
   talla: string;
   precio: number;
   codigo: string;

@@ -43,10 +43,9 @@ export class ModalProductComponent implements OnInit {
     }
   ) {
     this.form = new FormGroup({
-      title: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required, Validators.pattern(/^[a-z\s\u00E0-\u00FC\u00f1]*$/i)]),
       description: new FormControl('', [Validators.required]),
       categorySex: new FormControl('', [Validators.required]),
-      marca: new FormControl('', [Validators.required]),
       precio: new FormControl('', [Validators.required, Validators.min(1)]),
       categoryID: new FormControl('', [Validators.required]),
       talla: new FormControl('', [Validators.required]),
@@ -67,7 +66,6 @@ export class ModalProductComponent implements OnInit {
       this.form.controls['categoryID'].setValue(
         this.data.objProduct.categoryID
       );
-      this.form.controls['marca'].setValue(this.data.objProduct.marca);
       this.form.controls['talla'].setValue(this.data.objProduct.talla);
       this.form.controls['precio'].setValue(this.data.objProduct.precio);
       this.imageName = this.data.objProduct.imageUrl;
@@ -125,7 +123,7 @@ export class ModalProductComponent implements OnInit {
           if (this.objImagen.nombreArchivo.length > 0) this.uploadImage();
         },
         (e) => {
-          showNotifyError('Error al crear categoría', 'Intente mas tarde');
+          showNotifyError('Error al crear producto', 'Intente mas tarde');
         }
       );
   }

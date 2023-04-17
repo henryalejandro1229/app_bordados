@@ -69,8 +69,7 @@ export class ProductosService {
       .append('categorySex', formData.categorySex)
       .append('precio', formData.precio)
       .append('talla', formData.talla)
-      .append('imageUrl', imageUrl)
-      .append('marca', formData.marca);
+      .append('imageUrl', imageUrl);
     return this.http.get(`${environment.url}/products/createProduct.php`, {
       params,
     });
@@ -89,7 +88,6 @@ export class ProductosService {
       .append('categorySex', formData.categorySex)
       .append('precio', formData.precio)
       .append('talla', formData.talla)
-      .append('marca', formData.marca)
       .append('imageUrl', imageUrl);
     return this.http.get(`${environment.url}/products/updateProduct.php`, {
       params,
