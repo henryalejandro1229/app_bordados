@@ -14,6 +14,7 @@ import {
 })
 export class ForgotPwdComponent implements OnInit {
   form!: FormGroup;
+  loading = false;
 
   constructor(private _ls: LoginService) {}
 
@@ -24,8 +25,10 @@ export class ForgotPwdComponent implements OnInit {
   }
 
   validateEmail(): void {
+    this.loading = true;
     this._ls.validateEmail(this.form.value.email).subscribe(
       (res: any[]) => {
+        this.loading = false;
         if (res.length === 0) {
           showSwalWarning(
             'Cuenta no encontrada',
@@ -42,27 +45,29 @@ export class ForgotPwdComponent implements OnInit {
         }
         if (res.length === 1) {
           let { email, _id } = res[0];
-          this.sendEmail(email, _id.$oid);
+          // this.sendEmail(email, _id.$oid);
           return;
         }
       },
       (e) => {
+        this.loading = false;
         showNotifyError('Error al validar el email', 'Intente mas tarde');
       }
     );
   }
 
   sendEmail(email: string, id: string): void {
-    console.log('sendemail');
-
+    this.loading = true;
     this._ls.sendForgotEmail(email, id).subscribe(
       (res: any) => {
+        this.loading = false;
         showSwalSuccess(
           'Correo enviado',
           'Para continuar, ingrese al enlace que fue enviado a su correo electrónico'
         );
       },
       (e) => {
+        this.loading = false;
         showNotifyError('Error al enviar correo', 'Intente mas tarde');
       }
     );

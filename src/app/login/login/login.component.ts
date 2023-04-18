@@ -18,6 +18,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   clear: boolean = false;
+  loading = false;
 
   constructor(
     private readonly _loginService: LoginService,
@@ -34,10 +35,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.form.valid) {
+      this.loading = true;
       this._loginService
         .login(this.form.value.email, this.form.value.password)
         .subscribe(
           (res: ClienteModelo[]) => {
+            this.loading = false;
             if (res.length > 0) {
               let token: string = res[0]._id.$oid;
               showNotifySuccess('Bienvenido', '');
@@ -57,6 +60,7 @@ export class LoginComponent implements OnInit {
             }
           },
           (e) => {
+            this.loading = false;
             showNotifyError('Error al iniciar sesión', 'Intente mas tarde');
           }
         );

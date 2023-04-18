@@ -14,6 +14,7 @@ import {
 })
 export class RegisterComponent implements OnInit {
   formRegister!: FormGroup;
+  loading = false;
 
   constructor(private _ls: LoginService) {}
 
@@ -25,11 +26,14 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     if (this.formRegister.valid) {
+      this.loading = true;
       this._ls.singup(this.formRegister.value.email).subscribe(
         (res: any) => {
+          this.loading = false;
           this.validateEmail(true);
         },
         (e) => {
+          this.loading = false;
           showNotifyError('Error al registrar', 'Intente mas tarde');
         }
       );
@@ -37,15 +41,16 @@ export class RegisterComponent implements OnInit {
   }
 
   validateEmail(sendEmail = false): void {
+    this.loading = true;
     this._ls.validateEmail(this.formRegister.value.email).subscribe(
       (res: any[]) => {
-        if (res.length === 1) {
+        this.loading = false;
+        if (res.length === 1 && sendEmail) {
           let { email, _id } = res[0];
-          sendEmail ? this.sendEmail(email, _id.$oid) : this.register();
+          // this.sendEmail(email, _id.$oid)
           return;
         }
         if (res.length > 0) {
-          console.log(res[0]._id.$oid);
           showSwalWarning(
             'Correo existente',
             'Ya existe una cuenta con el correo ingresado'
@@ -55,22 +60,24 @@ export class RegisterComponent implements OnInit {
         this.register();
       },
       (e) => {
+        this.loading = false;
         showNotifyError('Error al validar el email', 'Intente mas tarde');
       }
     );
   }
 
   sendEmail(email: string, id: string): void {
-    console.log('sendemail');
-    
+    this.loading = true;
     this._ls.sendValidateEmail(email, id).subscribe(
       (res: any) => {
+        this.loading = false;
         showSwalSuccess(
           'Correo enviado',
           'Para continuar, ingrese al enlace que fue enviado a su correo electrónico'
         );
       },
       (e) => {
+        this.loading = false;
         showNotifyError('Error al enviar correo', 'Intente mas tarde');
       }
     );

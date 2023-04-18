@@ -22,6 +22,7 @@ export class ResetPasswordComponent implements OnInit {
   objCliente!: ClienteModelo;
   pwdsCoinciden = false;
   pwdsValue = false;
+  loading = false;
 
   constructor(
     private activatedRouter: ActivatedRoute,
@@ -46,8 +47,10 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {}
 
   consultaInfo(id: string): void {
+    this.loading = true;
     this._ls.getUsuario(id).subscribe(
       (res: ClienteModelo[]) => {
+        this.loading = false;
         if (!res[0]._id) {
           showNotifyError('Acceso denegado', 'Ruta no válida');
           this._router.navigate(['/home']);
@@ -57,6 +60,7 @@ export class ResetPasswordComponent implements OnInit {
         console.log(this.objCliente);
       },
       (e) => {
+        this.loading = false;
         showNotifyError('Error al consultar información', 'Intente mas tarde');
       }
     );
@@ -64,15 +68,18 @@ export class ResetPasswordComponent implements OnInit {
 
   restablecer(): void {
     if (this.form.valid && this.pwdsCoinciden) {
+      this.loading = true;
       let id: string = this.objCliente._id.$oid;
       this._ls
         .updatePwd(id, this.form.value.password)
         .subscribe(
           (res) => {
+            this.loading = false;
             showNotifySuccess('Contraseña actualizada', '¡Su contraseña se actualizó correctamente!');
             this._router.navigate(['/home/login']);
           },
           (e) => {
+            this.loading = false;
             showNotifyError('Error al restablecer contraseña', 'Intente mas tarde');
           }
         );
