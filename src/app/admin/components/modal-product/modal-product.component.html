@@ -32,13 +32,14 @@
                     <div *ngIf="!data.isNew" class="col-xs-12 border d-flex justify-content-center mb-3">
                         <img src="{{urlImage}}/{{imageName}}" class="img-fluid" alt="Imagen del producto">
                     </div>
-                    <input class="form-control" #inputFile type="file" accept="image/*" (change)="seleccionarImagen($event)">
+                    <input class="form-control" #inputFile type="file" accept="image/*"
+                        (change)="seleccionarImagen($event)">
                 </div>
                 <mat-form-field class="col-xs-12" color="primary" appearance="outline">
                     <mat-label>Descripción</mat-label>
-                    <input matInput type="text" placeholder="Descripción del producto"
-                        formControlName="description" />
-                        <mat-error *ngIf="form.controls['description'].errors?.['required']">Descripción requerida</mat-error>
+                    <input matInput type="text" placeholder="Descripción del producto" formControlName="description" />
+                    <mat-error *ngIf="form.controls['description'].errors?.['required']">Descripción
+                        requerida</mat-error>
                 </mat-form-field>
                 <mat-form-field class="col-md-6" color="primary" appearance="outline">
                     <mat-label>Precio</mat-label>
@@ -47,16 +48,6 @@
                     <mat-error *ngIf="form.controls['precio'].errors?.['min']">El precio mínimo es $1</mat-error>
                 </mat-form-field>
                 <mat-form-field class="col-md-6" color="primary" appearance="outline">
-                    <mat-label>Talla</mat-label>
-                    <mat-select formControlName="talla">
-                        <mat-option value="xl">Extra grande</mat-option>
-                        <mat-option value="l">Grande</mat-option>
-                        <mat-option value="m">Mediana</mat-option>
-                        <mat-option value="s">Chica</mat-option>
-                        <mat-option value="xs">Extra chica</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="col-md-12" color="primary" appearance="outline">
                     <mat-label>Sexo</mat-label>
                     <mat-select formControlName="categorySex">
                         <mat-option value="woman">Dama</mat-option>
@@ -74,10 +65,47 @@
                 </mat-form-field>
             </div>
         </form>
+
+        <div class="subtitle">
+            <div>
+                Inventario
+            </div>
+            <div class="linear"></div>
+        </div>
+
+        <div class="col-md-12">
+            <table mat-table [dataSource]="objTallas" class="shadow mb-4">
+                <ng-container matColumnDef="talla">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Talla </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        <container-element [ngSwitch]="element.talla">
+                            <span *ngSwitchCase="'xl'">Extra grande</span>
+                            <span *ngSwitchCase="'l'">Grande</span>
+                            <span *ngSwitchCase="'m'">Mediana</span>
+                            <span *ngSwitchCase="'s'">Chica</span>
+                            <span *ngSwitchCase="'xs'">Extra chica</span>
+                        </container-element>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="inventario">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Inventario </th>
+                    <td mat-cell *matCellDef="let element; let i = index" class="text-center">
+                        <mat-form-field class="form-full mt-2 input-inventario" color="primary" appearance="outline">
+                            <mat-label>Cantidad</mat-label>
+                            <input matInput type="number" [(ngModel)]="element.inventario"
+                                [ngModelOptions]="{standalone: true}" min="0" placeholder="Cantidad de inventario" />
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row class="example-element-row" *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
     </section>
 
     <section class="footer">
-        <button [disabled]="form.invalid || data.isNew && objImagen.nombreArchivo.length === 0" mat-raised-button class="k-btn-pry-pink" (click)="submit()">{{data.isNew ?
+        <button [disabled]="form.invalid || data.isNew && objImagen.nombreArchivo.length === 0" mat-raised-button
+            class="k-btn-pry-pink" (click)="submit()">{{data.isNew ?
             'Crear': 'Actualizar'}} producto</button>
     </section>
 

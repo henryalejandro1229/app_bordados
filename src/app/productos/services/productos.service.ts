@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import {
   CategoryModelo,
   ImagenModelo,
+  InventarioModelo,
   ProductoModelo,
 } from '../models/productos.modelo';
 
@@ -61,14 +62,18 @@ export class ProductosService {
     return this.http.get(`${environment.url}/products/getProducts.php`);
   }
 
-  createProduct(formData: ProductoModelo, imageUrl: string): Observable<any> {
+  createProduct(
+    formData: ProductoModelo,
+    imageUrl: string,
+    objTallas: InventarioModelo[]
+  ): Observable<any> {
     let params = new HttpParams()
       .append('title', formData.title)
       .append('description', formData.description)
       .append('categoryID', formData.categoryID)
       .append('categorySex', formData.categorySex)
       .append('precio', formData.precio)
-      .append('talla', formData.talla)
+      .append('inventario', JSON.stringify(objTallas))
       .append('imageUrl', imageUrl);
     return this.http.get(`${environment.url}/products/createProduct.php`, {
       params,
@@ -78,7 +83,8 @@ export class ProductosService {
   updateProduct(
     id: string,
     formData: ProductoModelo,
-    imageUrl: string
+    imageUrl: string,
+    objTallas: InventarioModelo[]
   ): Observable<any> {
     let params = new HttpParams()
       .append('id', id)
@@ -87,7 +93,7 @@ export class ProductosService {
       .append('categoryID', formData.categoryID)
       .append('categorySex', formData.categorySex)
       .append('precio', formData.precio)
-      .append('talla', formData.talla)
+      .append('inventario', JSON.stringify(objTallas))
       .append('imageUrl', imageUrl);
     return this.http.get(`${environment.url}/products/updateProduct.php`, {
       params,
