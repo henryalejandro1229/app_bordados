@@ -13,9 +13,18 @@ export interface ProductoModelo {
   description: string;
   categorySex: string;
   imageUrl: string;
-  talla: string;
+  inventario: InventarioModelo[];
   precio: number;
   codigo: string;
+}
+
+export class InventarioModelo {
+  talla: string;
+  inventario: number;
+  constructor(any: any) {
+    this.talla = any.talla;
+    this.inventario = any.inventario;
+  }
 }
 
 export interface ImagenModelo {

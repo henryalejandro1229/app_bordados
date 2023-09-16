@@ -4,7 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  token: string = '';
+  constructor() {
+    let id = this.getTokenLocalStorage();
+    this.token = id ? id : '';
+  }
 
   getTokenLocalStorage() {
     return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -25,6 +29,7 @@ export class AuthService {
   isAuth(): boolean {
     let token = this.getTokenLocalStorage();
     if (token && token?.length > 0) {
+      this.token = token;
       return true;
     }
     return false;
