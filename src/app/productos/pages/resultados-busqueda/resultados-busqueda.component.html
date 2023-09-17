@@ -100,7 +100,7 @@
                 <div class="py-4" *ngIf="!objProductos || objProductos.length === 0">
                     <p class="h3">No se encontraron resultados de "{{txtSearch}}"</p>
                 </div>
-                <div class="col-md-12" *ngFor="let prod of objProductos">
+                <div class="col-md-12" *ngFor="let prod of objProductos" (click)="verProducto(prod)" matTooltip="Ver producto">
                     <div class="card hover-shadow shadow">
                         <div class="col-xs-12">
                             <div class="row">
