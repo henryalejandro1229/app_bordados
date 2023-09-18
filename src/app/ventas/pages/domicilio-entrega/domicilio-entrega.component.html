@@ -6,7 +6,7 @@
                 [(ngModel)]="direccionID">
                 <mat-card class="my-3" *ngIf="!direcciones || direcciones.length === 0">
                     <div class="d-flex justify-content-center">
-                        <img src="../../../../assets/resources/no-directions.png" height="300px">
+                        <img src="../../../../assets/resources/no-directions.png" height="400px">
                     </div>
                     <p class="h6 my-2 text-center">Sin direcciones agregadas</p>
                 </mat-card>
@@ -56,11 +56,11 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <p>Envío</p>
-                        <p class="text-right">Gratis</p>
+                        <p class="text-right text-secondary-red">Gratis</p>
                     </div>
-                    <div class="d-flex justify-content-between h5">
-                        <p>Total</p>
-                        <p class="text-right">{{altaCarrito.total | currency:'MXN':'symbol-narrow':'.2-2'}}</p>
+                    <div class="d-flex justify-content-between h4">
+                        <p class="text-pry-red">Total</p>
+                        <p class="text-right text-pry-red">{{altaCarrito.total | currency:'MXN':'symbol-narrow':'.2-2'}}</p>
                     </div>
                 </mat-card-content>
             </mat-card>

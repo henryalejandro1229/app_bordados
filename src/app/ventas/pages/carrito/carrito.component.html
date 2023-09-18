@@ -11,8 +11,8 @@
               <br>
               <div class="d-flex justify-content-center">
                 <img
-                  src="https://img.freepik.com/vector-gratis/ilustracion-concepto-anadir-al-carro_114360-1435.jpg?w=826&t=st=1684813012~exp=1684813612~hmac=6f4104292783d5eb4e79c6e1a0980b42ab58521c849d7f88e26d8dc874064c84"
-                  height="300px">
+                  src="../../../../assets/resources/no-cart.png"
+                  height="400px">
               </div>
               <p class="h6 text-center">Su carrito de compras se encuentra vacío</p>
               <div class="d-flex justify-content-center">
@@ -33,7 +33,7 @@
                     <p class="h5 text-truncate cursor" (click)="verProducto(prod)" matTooltip="Ver producto">
                       {{prod.description}}
                     </p>
-                    <p class="h7">
+                    <p class="h7 text-secondary-red">
                       <small>Talla:
                         <container-element [ngSwitch]="prod.talla">
                           <b *ngSwitchCase="'xl'">Extra grande</b>

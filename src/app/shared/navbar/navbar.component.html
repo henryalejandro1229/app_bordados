@@ -33,7 +33,7 @@
           <button *ngFor="let catMan of categoriesMan" (click)="verCategoria(catMan)" mat-menu-item>{{catMan.name}}</button>
         </mat-menu>
         <button class="nav-link" mat-menu-item (click)="routerLink('/home/pedidos')">
-          PEDIDOS
+          MIS COMPRAS
         </button>
       </div>
       <div *ngIf="_auth.isAdmin() && _auth.isAuth()">
@@ -83,7 +83,7 @@
         </li>
         <li class="nav-item mx-2">
           <button class="nav-link" mat-button (click)="routerLink('/home/pedidos')">
-            PEDIDOS
+            MIS COMPRAS
           </button>
         </li>
       </ul>
@@ -108,7 +108,7 @@
     <div class="d-flex align-items-center">
       <div class="d-flex mx-4" *ngIf="_auth.isAuth() && !_auth.isAdmin() || !_auth.isAuth()">
         <form class="d-flex input-group w-auto mx-2">
-          <input type="search" (keyup.enter)="search(inputSearch.value)" #inputSearch class="form-control input-search form-control-sm rounded" placeholder="Buscar" aria-label="Search"
+          <input type="search" (keyup.enter)="search(inputSearch.value)" #inputSearch class="form-control input-search form-control-sm rounded" placeholder="Buscar en la tienda" aria-label="Search"
             aria-describedby="search-addon" />
         </form>
         <button mat-mini-fab (click)="search(inputSearch.value)" class="k-btn-pry-red" matTooltip="Buscar">
