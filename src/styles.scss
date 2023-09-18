@@ -31,8 +31,17 @@ body {
     transform: scale(1.01);
   }
 }
+.text-pry-gray {
+  color: $pry-gray !important;
+}
+.text-pry-dark {
+  color: $pry-dark !important;
+}
 .text-pry-pink {
   color: $pry-pink !important;
+}
+.text-secondary-pink {
+  color: $pry-green !important;
 }
 .container-image img {
 	height: 300px;

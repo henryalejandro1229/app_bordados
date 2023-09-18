@@ -82,7 +82,8 @@ export class DetailProductComponent implements OnInit {
     );
   }
 
-  setCantidad(input: any) {
+  setCantidad(input: any, objTalla: InventarioModelo = this.objTalla) {
+    this.objTalla = objTalla;
     if (parseFloat(input.value) > this.objTalla.inventario) {
       showNotifyWarning(
         '',
