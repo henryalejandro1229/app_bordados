@@ -55,11 +55,11 @@
                       <input matInput type="number" [ngModel]="prod.cantidad" #quantity placeholder="Cantidad" (change)="setCantidad(quantity, prod)"
                         [formControlName]="prod._id.$oid"/>
                     </mat-form-field>
-                    <p class="text-center">{{prod.existencia}} disponibles</p>
+                    <p class="text-center text-secondary-red">{{prod.existencia}} disponibles</p>
                   </div>
                   <div class="col-md-3">
                     <p class="h4 text-right">
-                      <b class="txt-red">
+                      <b class="text-pry-red">
                         {{prod.subtotal | currency:'MXN':'symbol-narrow':'.2-2'}}
                       </b>
                     </p>
@@ -83,7 +83,7 @@
           </div>
           <div class="d-flex justify-content-between">
             <p>Envío</p>
-            <p class="text-right">Gratis</p>
+            <p class="text-right text-secondary-red">Gratis</p>
           </div>
           <div class="d-flex justify-content-between h5">
             <p>Total</p>

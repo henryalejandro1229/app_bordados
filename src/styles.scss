@@ -37,11 +37,11 @@ body {
 .text-pry-dark {
   color: $pry-dark !important;
 }
-.text-pry-pink {
-  color: $pry-pink !important;
+.text-pry-red {
+  color: $pry-red !important;
 }
-.text-secondary-pink {
-  color: $pry-green !important;
+.text-secondary-red {
+  color: $secondary-red !important;
 }
 .container-image img {
 	height: 300px;
@@ -179,5 +179,5 @@ tr.example-element-row:not(.example-expanded-row):active {
   color: #4f4f4f;
 }
 .breadcrumb-link:hover {
-  color: $pry-pink;
+  color: $pry-red;
 }

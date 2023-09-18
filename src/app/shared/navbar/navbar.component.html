@@ -104,17 +104,17 @@
           <button class="nav-link" mat-button (click)="routerLink('/admin/mantenimiento')">SEGURIDAD</button>
         </li>
       </ul>
+    </div>
+    <div class="d-flex align-items-center">
       <div class="d-flex mx-4" *ngIf="_auth.isAuth() && !_auth.isAdmin() || !_auth.isAuth()">
         <form class="d-flex input-group w-auto mx-2">
           <input type="search" (keyup.enter)="search(inputSearch.value)" #inputSearch class="form-control input-search form-control-sm rounded" placeholder="Buscar" aria-label="Search"
             aria-describedby="search-addon" />
         </form>
-        <button mat-mini-fab color="primary" (click)="search(inputSearch.value)" matTooltip="Buscar">
+        <button mat-mini-fab (click)="search(inputSearch.value)" class="k-btn-pry-red" matTooltip="Buscar">
           <mat-icon>search</mat-icon>
         </button>
       </div>
-    </div>
-    <div class="d-flex align-items-center">
       <button (click)="routerLink('/home/ventas/carrito')" mat-icon-button [matBadge]="_vs.cantProductosCarrito" matBadgeColor="warn"
         matTooltip="Ver carrito" *ngIf="_auth.isAuth() && !_auth.isAdmin() || !_auth.isAuth()" class="mr-1">
         <mat-icon matSuffix>shopping_cart</mat-icon>

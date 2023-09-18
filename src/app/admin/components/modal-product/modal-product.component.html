@@ -105,7 +105,7 @@
 
     <section class="footer">
         <button [disabled]="form.invalid || data.isNew && objImagen.nombreArchivo.length === 0" mat-raised-button
-            class="k-btn-pry-pink" (click)="submit()">{{data.isNew ?
+            class="k-btn-pry-red" (click)="submit()">{{data.isNew ?
             'Crear': 'Actualizar'}} producto</button>
     </section>
 

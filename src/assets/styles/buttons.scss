@@ -25,7 +25,7 @@
   height: 40px !important;
 }
 
-.k-btn-pry-green {
+.k-btn-secondary-red {
   background-color: #24c161 !important;
 }
 
@@ -49,12 +49,12 @@
   background-color: #5E6EFF !important;
 }
 
-.k-btn-pry-pink {
-  background-color: $pry-pink !important;
+.k-btn-pry-red {
+  background-color: $pry-red !important;
   color: #FFF !important;
 }
 
-.k-btn-pry-pink:disabled {
+.k-btn-pry-red:disabled {
   background-color: #BDBDBD !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -116,7 +116,7 @@ background: none;
 }
 
 /*
-<button class="k-btn-primary k-btn-pry-green" mat-flat-button>Nuevo anticipo</button>
+<button class="k-btn-primary k-btn-secondary-red" mat-flat-button>Nuevo anticipo</button>
 
 <button class="k-btn-primary k-btn-pry-back" mat-flat-button>Nuevo anticipo</button>
 
