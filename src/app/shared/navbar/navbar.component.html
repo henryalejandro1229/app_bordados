@@ -32,8 +32,8 @@
         <mat-menu #matMenuHombreResp="matMenu">
           <button *ngFor="let catMan of categoriesMan" (click)="verCategoria(catMan)" mat-menu-item>{{catMan.name}}</button>
         </mat-menu>
-        <button class="nav-link" mat-menu-item (click)="routerLink('/home/pedidos')">
-          MIS COMPRAS
+        <button class="nav-link" mat-menu-item (click)="routerLink('/home/pedidos')" *ngIf="_auth.isAuth() && !_auth.isAdmin()">
+          MIS PEDIDOS
         </button>
       </div>
       <div *ngIf="_auth.isAdmin() && _auth.isAuth()">
@@ -81,9 +81,9 @@
             <button *ngFor="let catMan of categoriesMan" (click)="verCategoria(catMan)" mat-menu-item>{{catMan.name}}</button>
           </mat-menu>
         </li>
-        <li class="nav-item mx-2">
+        <li class="nav-item mx-2" *ngIf="_auth.isAuth() && !_auth.isAdmin()">
           <button class="nav-link" mat-button (click)="routerLink('/home/pedidos')">
-            MIS COMPRAS
+            MIS PEDIDOS
           </button>
         </li>
       </ul>
