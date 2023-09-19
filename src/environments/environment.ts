@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   url: `bordados_app_backend/api`,
   urlImg: `http://localhost/bordados_app_backend/api/products/imageProducts/`,
-  urlEmail: `https://app-los-pajaritos-server-email-production.up.railway.app/bordados_app_backend`,
+  urlEmail: `https://sastrerialospajaritos-86e11a91fb91.herokuapp.com/bordados_app_backend`,
 };
 
 /*
