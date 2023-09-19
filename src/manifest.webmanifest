@@ -1,11 +1,11 @@
 {
   "name": "app_bordados",
   "short_name": "app_bordados",
-  "theme_color": "#1976d2",
+  "theme_color": "#ed2c3e",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
-  "start_url": "./",
+  "start_url": "https://sastrerialospajaritos.proyectowebuni.com/#/home",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
