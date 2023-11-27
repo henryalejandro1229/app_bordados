@@ -1,10 +1,12 @@
 <div class="container-fluid p-4">
-    <div class="d-sm-flex align-items-center justify-content-between my-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <div class="py-4">
+        <div><b class="h3">Dashboard</b>
+        </div>
+        <p class="h6 fw-light">Resumen</p>
     </div>
-    
+
     <!-- Content Row -->
-    <!-- <div class="row">
+    <!-- <div class="row mb-4">
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
@@ -50,9 +52,8 @@
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar"
-                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -81,5 +82,24 @@
             </div>
         </div>
     </div> -->
-    
+
+    <div class="row mb-4">
+        <div class="col-md-12 mb-4">
+            <b class="h4">Encuestas de satisfacción del cliente</b>
+        </div>
+        <div class="col-md-4">
+            <p class="h6 fw-light">¿Cómo describirías tu experiencia de navegación en nuestra aplicación móvil?</p>
+            <canvas id="myChartExperienciaNav" width="400" height="400"></canvas>
+        </div>
+        <div class="col-md-4">
+            <p class="h6 fw-light">¿Cuán probable es que recomiende nuestros productos o servicios?</p>
+            <canvas id="myChartRecomendacion" width="400" height="400"></canvas>
+        </div>
+        <div class="col-md-4">
+            <p class="h6 fw-light">¿Cuán satisfecho estás con la variedad de productos disponibles en nuestra tienda?
+            </p>
+            <canvas id="myChartVariedadProds" width="400" height="400"></canvas>
+        </div>
+    </div>
+
 </div>

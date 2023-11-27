@@ -120,4 +120,9 @@ export class LoginService {
     const url = `${environment.url}/mongotools/getRestores.php?`;
     return this.http.get(url);
   }
+
+  getFeedbacks(): Observable<any> {
+    const url = `${environment.url}/users/getFeedbacks.php`;
+    return this.http.get(url);
+  }
 }
