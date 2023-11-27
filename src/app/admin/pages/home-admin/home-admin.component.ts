@@ -15,26 +15,26 @@ export class HomeAdminComponent implements OnInit {
   feedbacks: Feedback[] = [];
   experienciaNavegacion: string[] = [];
   experienciaNavegacionAgrupada: { [key: string]: number } = {
-    'Muy fácil y amigable': 30,
-    Fácil: 40,
-    Neutral: 20,
-    Difícil: 50,
-    'Muy difícil': 60,
+    'Muy fácil y amigable': 0,
+    Fácil: 0,
+    Neutral: 0,
+    Difícil: 0,
+    'Muy difícil': 0,
   };
   recomendacion: string[] = [];
   recomendacionAgrupada: { [key: string]: number } = {
-    'Muy probable': 15,
-    'Poco probable': 62,
-    Probable: 55,
-    'Nada probable': 4,
+    'Muy probable': 0,
+    'Poco probable': 0,
+    Probable: 0,
+    'Nada probable': 0,
   };
   variedadProductos: string[] = [];
   variedadProductosAgrupada: { [key: string]: number } = {
-    'Muy satisfecho': 52,
-    Satisfecho: 16,
-    Neutral: 25,
-    'Poco satisfecho': 32,
-    'Nada satisfecho': 42,
+    'Muy satisfecho': 0,
+    Satisfecho: 0,
+    Neutral: 0,
+    'Poco satisfecho': 0,
+    'Nada satisfecho': 0,
   };
 
   constructor(private readonly _ls: LoginService) {}
@@ -73,6 +73,9 @@ export class HomeAdminComponent implements OnInit {
           this.variedadProductos,
           this.variedadProductosAgrupada
         );
+        this.createChartExperienciaNav();
+        this.createChartRecomendacion();
+        this.createChartVariedadProds();
       },
       (e) => {
         showNotifyError('Error consultar información', 'Intente mas tarde');
@@ -85,7 +88,7 @@ export class HomeAdminComponent implements OnInit {
       'myChartExperienciaNav'
     ) as HTMLCanvasElement;
     this.chartExperienciaNav = new Chart(ctx, {
-      type: 'doughnut',
+      type: 'pie',
       data: {
         labels: [
           'Muy fácil y amigable',
@@ -96,7 +99,7 @@ export class HomeAdminComponent implements OnInit {
         ],
         datasets: [
           {
-            label: 'Sample Data',
+            label: 'Cantidad',
             data: [
               this.experienciaNavegacionAgrupada['Muy fácil y amigable'],
               this.experienciaNavegacionAgrupada['Fácil'],
@@ -105,6 +108,7 @@ export class HomeAdminComponent implements OnInit {
               this.experienciaNavegacionAgrupada['Muy difícil'],
             ],
             borderWidth: 1,
+            hoverOffset: 10,
           },
         ],
       },
@@ -115,13 +119,13 @@ export class HomeAdminComponent implements OnInit {
     const ctx = document.getElementById(
       'myChartRecomendacion'
     ) as HTMLCanvasElement;
-    this.chartExperienciaNav = new Chart(ctx, {
+    this.chartRecomendacion = new Chart(ctx, {
       type: 'doughnut',
       data: {
         labels: ['Muy probable', 'Poco probable', 'Probable', 'Nada probable'],
         datasets: [
           {
-            label: 'Sample Data',
+            label: 'Cantidad',
             data: [
               this.recomendacionAgrupada['Muy probable'],
               this.recomendacionAgrupada['Poco probable'],
@@ -129,6 +133,7 @@ export class HomeAdminComponent implements OnInit {
               this.recomendacionAgrupada['Nada probable'],
             ],
             borderWidth: 1,
+            hoverOffset: 10,
           },
         ],
       },
@@ -139,8 +144,8 @@ export class HomeAdminComponent implements OnInit {
     const ctx = document.getElementById(
       'myChartVariedadProds'
     ) as HTMLCanvasElement;
-    this.chartExperienciaNav = new Chart(ctx, {
-      type: 'doughnut',
+    this.chartVariedadProds = new Chart(ctx, {
+      type: 'line',
       data: {
         labels: [
           'Muy satisfecho',
@@ -151,7 +156,7 @@ export class HomeAdminComponent implements OnInit {
         ],
         datasets: [
           {
-            label: 'Sample Data',
+            label: 'Cantidad',
             data: [
               this.variedadProductosAgrupada['Muy satisfecho'],
               this.variedadProductosAgrupada['Satisfecho'],
@@ -159,7 +164,12 @@ export class HomeAdminComponent implements OnInit {
               this.variedadProductosAgrupada['Poco satisfecho'],
               this.variedadProductosAgrupada['Nada satisfecho'],
             ],
-            // borderWidth: 1,
+            fill: true,
+            pointRadius: 5,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1,
+            borderWidth: 2,
+            backgroundColor: 'rgba(75, 192, 192, 0.3)',
           },
         ],
       },
