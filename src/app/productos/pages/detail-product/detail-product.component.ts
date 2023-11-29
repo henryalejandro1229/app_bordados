@@ -15,6 +15,8 @@ import {
 } from 'src/app/shared/functions/Utilities';
 import { ProductoCarritoModelo } from 'src/app/ventas/models/ventas.modelo';
 import { VentasService } from 'src/app/ventas/services/ventas.service';
+import { SwPush } from '@angular/service-worker';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-detail-product',
@@ -34,16 +36,42 @@ export class DetailProductComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private _ps: ProductosService,
-    private _vs: VentasService
+    private _vs: VentasService,
+    private swPush: SwPush,
+    private _ns: NotificationsService
   ) {}
 
   ngOnInit(): void {
-    console.log('DetailProductComponent')
+    console.log('DetailProductComponent');
     this.activatedRoute.queryParams.subscribe((res) => {
       if (res) {
         this.consultaInfo(res['ID']);
       }
     });
+  }
+
+  ngOnDestroy() {
+    if (this.objTalla && this.objTalla.inventario < 3) {
+      const notification = {
+        notification: {
+          title: ' ¡Últimas unidades disponibles!',
+          body: `El producto ${this.objProducto.title} está volando de nuestros estantes. ¡Asegúrate de obtener el tuyo antes de que se agote!`,
+          vibrate: [100, 50, 100],
+          url: 'https://sastrerialospajaritos.proyectowebuni.com/',
+          image:
+            `${this.urlImage}/${this.objProducto.imageUrl}`,
+          actions: [
+            {
+              action: 'explore',
+              title: 'Ver producto',
+            },
+          ],
+        },
+      };
+      this.swPush.subscription.subscribe((sub) => {
+        this._ns.sendNotification(sub, notification).subscribe();
+      });
+    }
   }
 
   consultaInfo(id: string): void {

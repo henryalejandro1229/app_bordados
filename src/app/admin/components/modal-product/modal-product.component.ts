@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { SwPush } from '@angular/service-worker';
 import {
   CategoryModelo,
   ProductoModelo,
@@ -20,6 +21,7 @@ import {
   showNotifySuccess,
   showSwalWarning,
 } from 'src/app/shared/functions/Utilities';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -51,7 +53,9 @@ export class ModalProductComponent implements OnInit {
     public data: {
       objProduct: ProductoModelo;
       isNew: boolean;
-    }
+    },
+    private swPush: SwPush,
+    private _ns: NotificationsService
   ) {
     this.form = new FormGroup({
       title: new FormControl('', [
@@ -153,6 +157,25 @@ export class ModalProductComponent implements OnInit {
             'Producto creado',
             'El producto fue creado correctamente'
           );
+          const notification = {
+            notification: {
+              title: '¡Descubre lo último en nuestra tienda!',
+              body: `Hemos agregado ${this.form.value.title}, ¡échale un vistazo y mantente a la moda!`,
+              vibrate: [100, 50, 100],
+              url: 'https://sastrerialospajaritos.proyectowebuni.com/',
+              image:
+                'https://sastrerialospajaritos.proyectowebuni.com/assets/resources/logo.png',
+              actions: [
+                {
+                  action: 'explore',
+                  title: 'Descubrir productos',
+                },
+              ],
+            },
+          };
+          this.swPush.subscription.subscribe((sub) => {
+            this._ns.pushNotificationMasiva(notification).subscribe();
+          });
           if (this.objImagen.nombreArchivo.length > 0) this.uploadImage();
         },
         (e) => {
