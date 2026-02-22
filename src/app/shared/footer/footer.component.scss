@@ -1,0 +1,38 @@
+.footer-main {
+  margin-top: 2.5rem;
+  background: linear-gradient(145deg, #090a0f, #171a21) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+}
+
+.footer-text {
+  color: #e8ebf2;
+  line-height: 1.65;
+}
+
+.footer-link {
+  color: #f2f5ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #ffb3be;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::ng-deep .footer-main .mat-list-base .mat-list-item,
+::ng-deep .footer-main .mat-list-base .mat-list-option {
+  height: auto !important;
+  margin-bottom: 0.5rem;
+}
+
+::ng-deep .footer-main .mat-list-item,
+::ng-deep .footer-main .mat-list-item .mat-list-item-content,
+::ng-deep .footer-main .mat-icon {
+  color: #ffffff !important;
+}

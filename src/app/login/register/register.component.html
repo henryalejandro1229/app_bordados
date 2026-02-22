@@ -1,37 +1,67 @@
-<main class="login-page bg-light">
-  <section class="login-body">
-    <section class="login-logo">
-      <a [routerLink]="['/home']" style="cursor: pointer"><img src="../../../assets/resources/image-logo.jpeg" alt="" /></a>
-    </section>
-    <section class="login-container shadow-lg">
-      <section class="card b-nn">
-        <header class="title-card">
-          <h1>Registro</h1>
-        </header>
-        <mat-divider></mat-divider>
-        <form [formGroup]="formRegister">
-          <section class="card-form">
-            <div class="form-usuario">
-              <mat-form-field appearance="outline" class="form-full">
-                <mat-label>Correo electrónico</mat-label>
-                <input matInput formControlName="email" placeholder="Ingrese su correo electrónico" type="email"
-                  required />
-                  <mat-error *ngIf="formRegister.controls['email'].errors?.['required']">Correo electrónico requerido</mat-error>
-                  <mat-error *ngIf="formRegister.controls['email'].errors?.['email']">Correo electrónico no válido</mat-error>
-              </mat-form-field>
-            </div>
-          </section>
-        </form>
-        <section class="action">
-          <button (click)="validateEmail()" class="k-btn-primary k-btn-pry-red" mat-flat-button [disabled]="formRegister.invalid">
-            <span class="spinner-border spinner-border-sm" role="status" *ngIf="loading"></span>
-            Registrarme
-          </button>
-        </section>
-        <div class="forgot-psw text-center">
-          <a [routerLink]="['/home/login']">Iniciar sesión</a>
-        </div>
-      </section>
-    </section>
+<main class="auth-page">
+  <section class="auth-shell">
+    <article class="auth-brand">
+      <a [routerLink]="['/home']" class="brand-logo">
+        <img src="../../../assets/resources/image-logo.jpeg" alt="Logo" />
+      </a>
+      <span class="brand-kicker">Sastrería Los Pajaritos</span>
+      <h2>Crea tu cuenta</h2>
+      <p>
+        Regístrate para recibir novedades, gestionar pedidos y mantener tus
+        datos de envío en un solo lugar.
+      </p>
+      <ul class="auth-points">
+        <li>Acceso a promociones y novedades</li>
+        <li>Administración de direcciones de envío</li>
+        <li>Compras más rápidas en tu siguiente visita</li>
+      </ul>
+      <div class="auth-chip">Registro rápido y seguro</div>
+    </article>
+
+    <article class="auth-card">
+      <header class="auth-header">
+        <span class="form-kicker">Nuevo cliente</span>
+        <h1>Registro</h1>
+        <p>Inicia con tu correo electrónico.</p>
+      </header>
+
+      <form [formGroup]="formRegister">
+        <mat-form-field appearance="outline" class="form-full">
+          <mat-label>Correo electrónico</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="correo@ejemplo.com"
+            type="email"
+            required
+          />
+          <mat-error *ngIf="formRegister.controls['email'].errors?.['required']">
+            Correo electrónico requerido
+          </mat-error>
+          <mat-error *ngIf="formRegister.controls['email'].errors?.['email']">
+            Correo electrónico no válido
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+      <button
+        (click)="validateEmail()"
+        class="k-btn-primary k-btn-pry-red submit-btn"
+        mat-flat-button
+        [disabled]="formRegister.invalid"
+      >
+        <span
+          class="spinner-border spinner-border-sm"
+          role="status"
+          *ngIf="loading"
+        ></span>
+        Registrarme
+      </button>
+
+      <div class="switch-auth">
+        <span>¿Ya tienes una cuenta?</span>
+        <a [routerLink]="['/home/login']">Iniciar sesión</a>
+      </div>
+    </article>
   </section>
 </main>

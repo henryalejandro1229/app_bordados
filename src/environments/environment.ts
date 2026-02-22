@@ -5,8 +5,9 @@ export const host = '127.0.0.1';
 export const hostEmail = 'localhost:4000'
 export const environment = {
   production: false,
+  useMockApi: true,
   url: `bordados_app_backend/api`,
-  urlImg: `http://localhost/bordados_app_backend/api/products/imageProducts/`,
+  urlImg: `assets/resources/`,
   urlEmail: `https://sastrerialospajaritos-86e11a91fb91.herokuapp.com/bordados_app_backend`,
 };
 

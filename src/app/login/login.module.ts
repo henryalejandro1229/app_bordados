@@ -7,26 +7,21 @@ import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
 import { RegisterProcessComponent } from './register-process/register-process.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
-
-
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ForgotPwdComponent,
     RegisterProcessComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
+  imports: [CommonModule, SharedModule],
   exports: [
     LoginComponent,
     RegisterComponent,
     ForgotPwdComponent,
     RegisterProcessComponent,
-    ResetPasswordComponent
-  ]
+    ResetPasswordComponent,
+  ],
 })
-export class LoginModule { }
+export class LoginModule {}

@@ -107,6 +107,14 @@ export class HomeAdminComponent implements OnInit {
               this.experienciaNavegacionAgrupada['Difícil'],
               this.experienciaNavegacionAgrupada['Muy difícil'],
             ],
+            backgroundColor: [
+              '#2EC4B6',
+              '#3A86FF',
+              '#FFBE0B',
+              '#FB5607',
+              '#D7263D',
+            ],
+            borderColor: '#ffffff',
             borderWidth: 1,
             hoverOffset: 10,
           },
@@ -132,6 +140,14 @@ export class HomeAdminComponent implements OnInit {
               this.recomendacionAgrupada['Probable'],
               this.recomendacionAgrupada['Nada probable'],
             ],
+            backgroundColor: [
+              '#2EC4B6',
+              '#3A86FF',
+              '#FFBE0B',
+              '#FB5607',
+              '#D7263D',
+            ],
+            borderColor: '#ffffff',
             borderWidth: 1,
             hoverOffset: 10,
           },
@@ -187,3 +203,4 @@ export interface Preguntas {
   recomendacion: string;
   variedadProductos: string;
 }
+

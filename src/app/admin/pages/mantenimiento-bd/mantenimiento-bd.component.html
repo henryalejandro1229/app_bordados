@@ -20,7 +20,7 @@
                             </div>
                         </div>
                     </div>
-                    <button mat-button (click)="restoreDB()" class="btn btn-primary mt-3"><mat-icon>restore</mat-icon>
+                    <button mat-button (click)="restoreDB()" class="btn btn-maint-secondary mt-3"><mat-icon>restore</mat-icon>
                         Restaurar base de datos</button>
                     <div class="py-4">
                         <p>Copia de seguridad disponible: {{dumpDisp.date | date: 'dd/mm/yyyy hh:mm a' }}</p>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <button mat-button (click)="createBackup()" class="btn btn-primary mt-3"><mat-icon>add</mat-icon> Crear nueva
+                    <button mat-button (click)="createBackup()" class="btn btn-maint-primary mt-3"><mat-icon>add</mat-icon> Crear nueva
                         copia de seguridad
                     </button>
                     <div class="py-4">

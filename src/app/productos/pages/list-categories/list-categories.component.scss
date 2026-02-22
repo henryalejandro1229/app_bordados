@@ -1,0 +1,25 @@
+.img-fluid {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 0 0 14px 14px;
+  border-bottom: 1px solid #eadfd3;
+}
+
+.container {
+  padding-top: 1rem;
+}
+
+.h3 {
+  font-weight: 700;
+  color: #332b28;
+}
+
+.h5.fw-light {
+  color: #766963;
+}
+
+.card-footer .btn {
+  min-width: 150px;
+  border-radius: 999px;
+}

@@ -1,6 +1,9 @@
 .input-search {
-  min-width: 100px;
+  min-width: 170px;
   max-width: 420px;
+  border-radius: 999px !important;
+  border: 1px solid #ddd1c4;
+  padding-left: 0.9rem;
 }
 
 .div-search {
@@ -10,6 +13,40 @@
 
 .navbar {
   flex-wrap: revert;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  background: var(--logo-surface) !important;
+  border-bottom: 1px solid #e8ddd2;
+
+  .navbar-brand {
+    background: var(--logo-surface);
+    border-radius: 12px;
+    padding: 0.2rem 0.45rem;
+    border: none;
+  }
+
+  .navbar-brand img {
+    height: 52px;
+    border-radius: 6px;
+    object-fit: contain;
+    border: none;
+    box-shadow: none;
+  }
+
+  .nav-link {
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color: #5e5148 !important;
+    border-radius: 10px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    background: #f8efe5;
+    color: #9b2d3b !important;
+  }
 }
 
 .mr-1 {
@@ -27,5 +64,39 @@
   a {
     color: rgb(122, 122, 122);
     height: 30px;
+  }
+
+  img {
+    border: 2px solid #eadfd3;
+  }
+}
+
+.d-flex.mx-4 {
+  background: #f9f4ee;
+  border-radius: 999px;
+  border: 1px solid #eadfd2;
+  padding: 0.4rem 0.45rem;
+}
+
+button[mat-icon-button] {
+  color: #8d2634;
+}
+
+button[mat-button] mat-icon {
+  margin-right: 0.2rem;
+}
+
+@media (max-width: 992px) {
+  .navbar .navbar-collapse {
+    background: #f7efe4;
+    border-radius: 12px;
+    border: 1px solid #ecdfd3;
+    margin-top: 0.6rem;
+    padding: 0.6rem;
+  }
+
+  .d-flex.mx-4 {
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
   }
 }
